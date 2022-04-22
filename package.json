@@ -12,7 +12,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-commands": "node deploy-commands.js",
+    "start-bot": "node index.js",
+    "start": "npm run deploy-commands && npm run start-bot"
   },
   "author": "",
   "license": "ISC",
