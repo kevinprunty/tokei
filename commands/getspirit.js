@@ -9,7 +9,7 @@ module.exports = {
 	async execute(interaction) {
         const spirit = getRandomSpirit();
 		await interaction.reply({
-			content:`Your spirit is #${spirit.number}: ${spirit.name}. <@&966341443453063168>`,
+			content:`Your spirit is #${spirit.number}: ${spirit.name} (${spirit.series}). <@&966341443453063168>`,
 			allowedMentions: { parse: ['roles'], repliedUser: false }
 		})
 	},
