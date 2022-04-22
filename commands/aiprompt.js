@@ -11,11 +11,12 @@ module.exports = {
 				.setRequired(true)),
 	async execute(interaction) {
 		const prompt = interaction.options.getString('prompt');
+        await interaction.reply('Getting AI response');
         const response = await getResponse(prompt);
         if (!response) {
-            await interaction.reply({content:"The responses are broken at the moment!", ephemeral: true});
+            await interaction.editReply({content:"The AI responses are broken at the moment!"});
         }
         const compositeResponse = `Your prompt: ${prompt}\nResponse: ${response}`
-		await interaction.reply({content:compositeResponse});
+		await interaction.editReply({content:compositeResponse});
 	},
 };
