@@ -10,7 +10,8 @@ const { Client, Collection, Intents } = require('discord.js');
 
 // Create a new client
 const client = new Client({
-    intents: [Intents.FLAGS.GUILDS]
+    intents: [Intents.FLAGS.GUILDS],
+    allowedMentions: { parse: ['roles'], repliedUser: false }
 });
 
 // Create a collection of commands
