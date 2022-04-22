@@ -8,6 +8,6 @@ module.exports = {
 		.setDescription('Returns a random spirit from SSBU.'),
 	async execute(interaction) {
         const spirit = getRandomSpirit();
-		await interaction.reply({content:`Your spirit is #${spirit.number}: ${spirit.name}.`})
+		await interaction.reply({content:`Your spirit is #${spirit.number}: ${spirit.name}. <@&966341443453063168>`})
 	},
 };
