@@ -26,8 +26,6 @@ const getMinimizedPokemon = () => {
     }
 }
 
-console.log(findMinimizedPokemon());
-
 module.exports = {
     findRandomPokemon,
     getMinimizedPokemon
