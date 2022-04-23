@@ -34,6 +34,6 @@ module.exports = {
         }
         
 
-		await interaction.reply({ content:`Your roll:${roll}\nRoll total: ${total}. Final roll: ${rolls[rolls.length-1]}.`})
+		await interaction.reply({ content:`Your roll: ${roll}\nRoll total: ${total}. Final roll: ${rolls[rolls.length-1]}.`})
 	},
 };
