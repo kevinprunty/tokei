@@ -8,7 +8,7 @@ module.exports = {
 	async execute(interaction) {
         const pokemon = getMinimizedPokemon();
 		await interaction.reply({
-			content:`Your Pokemon is #${pokemon.number}: ${pokemon.name}. <@&966341443453063168>`,
+			content:`Your Pokemon is #${pokemon.number}: ${pokemon.name}.`,
 			allowedMentions: { parse: ['roles'], repliedUser: false }
 		})
 	},
