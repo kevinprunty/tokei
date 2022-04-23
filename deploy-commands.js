@@ -20,9 +20,15 @@ const rest = new REST({ version: '9' }).setToken(token);
 (async ()=>{
 
 	try {
-		console.log(process.env);
-		console.log(`Started refreshing slash commands.`);
-		await rest.put(Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), { body: commands })
+		let guildID = '';
+		if (process.env.NODE_ENV === "development"){
+			guildID = process.env.DEV_GUILD_ID
+		} else { 
+			guildID = process.env.GUILD_ID;
+		}
+
+		console.log(`Started refreshing slash commands for ${process.env.NODE_ENV}.`);
+		await rest.put(Routes.applicationGuildCommands(process.env.CLIENT_ID, guildID), { body: commands })
 		.then(() => console.log('Successfully registered application commands.'))
 		.catch(console.error);
 
