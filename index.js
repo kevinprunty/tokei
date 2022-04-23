@@ -29,7 +29,7 @@ for (const file of commandFiles){
 }
 
 
-client.once('ready', () => {
+client.once('ready', async () => {
     console.log('Bot is ready.');
     console.log('Connecting to the database');
     const connection = await mongoose.connect(`mongodb+srv://admin:${process.env.DB_PASS}@cluster0.dumc6.mongodb.net/tokei?retryWrites=true&w=majority`);
