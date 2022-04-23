@@ -29,7 +29,10 @@ module.exports = {
             total += newRoll;
             rolls.push(newRoll);
         }
-        total += constant;
+        if (constant){
+            total += Number.parseInt(constant);
+        }
+        
 
 		await interaction.reply({ content:`Your roll:${roll}\nRoll total: ${total}. Final roll: ${rolls[rolls.length-1]}.`})
 	},
