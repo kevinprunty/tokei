@@ -11,7 +11,7 @@ module.exports = {
 		.setDescription('Roll a dice (#d# format).')
         .addStringOption(option => option.setName('roll').setDescription("#d# roll").setRequired(true)),
 	async execute(interaction) {
-        const rollRegex = /\d+d\d+/g;
+        const rollRegex = /\d+d\d+\+*\d*/g;
         const roll = interaction.options.getString('roll');
         if (!rollRegex.test(roll)){ 
             return interaction.reply({
@@ -20,7 +20,8 @@ module.exports = {
             })
         }
 
-        const [number, sides] = roll.split('d');
+        const [number, sidesAndConstant] = roll.split('d');
+        const [sides, constant] = sidesAndConstant.split('+');
         let total = 0;
         const rolls = [];
         for (let i = 0; i < number; i++){
@@ -28,7 +29,8 @@ module.exports = {
             total += newRoll;
             rolls.push(newRoll);
         }
+        total += constant;
 
-		await interaction.reply({ content:`Roll total: ${total}. Final roll: ${rolls[rolls.length-1]}.`})
+		await interaction.reply({ content:`Your roll:${roll}\nRoll total: ${total}. Final roll: ${rolls[rolls.length-1]}.`})
 	},
 };
