@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const drawingSchema = new Schema({
     artist: {type: String, required: true},
-    number: Number,
+    number: {type: Number, unique: true},
     name: {type: String, required: true},
     series: String,
     event: {type: String, required: true},
