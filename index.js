@@ -1,6 +1,9 @@
 // Read files
 const fs = require('node:fs');
 
+// Database
+const mongoose = require('mongoose');
+
 // Read environment file
 const dotenv = require('dotenv');
 dotenv.config();
@@ -28,7 +31,12 @@ for (const file of commandFiles){
 
 client.once('ready', () => {
     console.log('Bot is ready.');
+    console.log('Connecting to the database');
+    const connection = await mongoose.connect(`mongodb+srv://admin:${process.env.DB_PASS}@cluster0.dumc6.mongodb.net/tokei?retryWrites=true&w=majority`);
+    console.log('Conencted to the database');
 });
+
+
 
 // Commands
 client.on('interactionCreate', async interaction => {
