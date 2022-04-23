@@ -4,7 +4,7 @@ const serverList = require('../data/servers.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('serverlist')
+		.setName('getserver')
 		.setDescription('Returns info about EXP owned servers.')
 		.addStringOption(option => 
 			option.setName('server')
