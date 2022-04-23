@@ -1,4 +1,3 @@
-const { getRandomSpirit } = require('../tools/spiritlist.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
 const rollDice = inputSides => {
