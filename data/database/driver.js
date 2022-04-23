@@ -20,9 +20,12 @@ const eventDrawing = {
             }
         });
 
-        newEntry.save(function(err){
+        return newEntry.save(function(err){
             if (err) console.log(err.message);
         });
+    },
+    debugDeleteAllEntries : function(){
+        EventDrawing.remove({}, ()=>console.log("Error! For some reason!"));
     }
 }
 
