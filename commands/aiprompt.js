@@ -17,6 +17,9 @@ module.exports = {
             await interaction.editReply({content:"The AI responses are broken at the moment!"});
         }
         const compositeResponse = `Your prompt: ${prompt}\nResponse: ${response}`
+		if (compositeResponse.length > 2000){
+			return interaction.editReply({content:"Whoops, that response was too long. Sorry!"})
+		}
 		await interaction.editReply({content:compositeResponse});
 	},
 };
