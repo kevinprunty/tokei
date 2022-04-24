@@ -18,6 +18,7 @@ module.exports = {
         }
         const compositeResponse = `Your prompt: ${prompt}\nResponse: ${response}`
 		if (compositeResponse.length > 2000){
+			console.log(compositeResponse);
 			return interaction.editReply({content:"Whoops, that response was too long. Sorry!"})
 		}
 		await interaction.editReply({content:compositeResponse});
