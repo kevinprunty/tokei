@@ -12,7 +12,7 @@ module.exports = {
         const completion = await openai.createCompletion("text-davinci-002", {
           prompt: prompt,
           temperature: 0.9,
-          max_tokens: 350
+          max_tokens: 1000
         });
         return completion.data.choices[0].text;
       }

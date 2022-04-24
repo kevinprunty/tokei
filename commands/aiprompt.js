@@ -19,8 +19,21 @@ module.exports = {
         const compositeResponse = `Your prompt: ${prompt}\nResponse: ${response}`
 		if (compositeResponse.length > 2000){
 			console.log(compositeResponse);
-			return interaction.editReply({content:"Whoops, that response was too long. Sorry!"})
+			try{
+				const regex = /[\s\S]{1,2000}/gm;
+				const sections = compositeResponse.match(regex);
+				const firstSection = sections.shift();
+				await interaction.editReply({content:firstSection});
+				for (let section of sections){
+					await interaction.followUp({content: section});
+				}
+
+			} catch(err){
+				return interaction.editReply({content:"Whoops, that response was too long. Sorry!"})
+			}
+		} else {
+			await interaction.editReply({content:compositeResponse});
 		}
-		await interaction.editReply({content:compositeResponse});
+		
 	},
 };
