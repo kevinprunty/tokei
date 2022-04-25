@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { ApplicationCommandPermissionType } = require('discord-api-types/v10');
 
 const hitsAttacks = [
 	'suplex',
@@ -30,36 +29,65 @@ const hitsAttacks = [
 	'Irish whip',
 	'back grapple',
 	'revolver',
-	'keyblade'
+	'keyblade', 
+	'quarterstaff',
+	'can of soup', 
+	'cross chop',
+	'jump kick',
+	'karate chop',
+	'mach punch',
+	'seismic toss'
 ];
 
 const sliceAttacks = [
 	'katana',
 	'masamune',
+	'photon edge',
+	'slicey slice', 
+	'scythe'
 ];
 const stabAttacks = [
 	'dagger',
 	'kitchen knife',
-	'stabbity stab'
+	'stabbity stab', 
+	'spear',
+	'pike',
+	'plastic fork'
 ];
 
-const attacks = [...hitsAttacks, ...sliceAttacks, ...stabAttacks]
+const shootAttacks = [
+	'gun',
+	'revolver',
+	'laser gun',
+	'flamethrower', 
+	'bow and arrow',
+	'missile'
+]
+
+const attacks = [...hitsAttacks, ...sliceAttacks, ...stabAttacks, ...shootAttacks]
 
 const adjectives = [
 	'vicious',
 	'terrifying',
 	'devastating',
 	'chunky',
-	'cruel'
+	'fat',
+	'cruel',
+	'spicy',
+	'well placed',
+	'well earned',
+	'pretty weak',
+	'strong',
+	'chad-like', 
+	'intimidating',
+	'appropriate',
+	'inappropriate',
 ];
 
 const randomArrayItem = (array) => {
 	const randomIndex = Math.floor(Math.random() * array.length);
 	return (array[randomIndex]);
 }
-
-
-
 
 
 
@@ -70,21 +98,31 @@ module.exports = {
 		.addUserOption(option => option.setName('user').setDescription('User to attack').setRequired(true)),
 	async execute(interaction) {
         let action;
+		let article;
 		let attack = randomArrayItem(attacks)
+		let adjective = randomArrayItem(adjectives);
 
 		if (sliceAttacks.includes(attack)){
 			action = "slices";
 		} else if (stabAttacks.includes(attack)) {
 			action = "stabs";
+		} else if (shootAttacks.includes(attack)) {
+			action = "shoots";
 		} else {
 			action = "hits";
+		}
+
+		if (['a','e','i','o','u'].includes(adjective.charAt(0))){
+			article = 'an'
+		} else { 
+			article = 'a'
 		}
 
 		const target = interaction.options.getUser('user');
 		const attacker = interaction.user;
 
 		await interaction.reply({
-			content:`${attacker} ${action.toUpperCase()} ${target} WITH A ${randomArrayItem(adjectives).toUpperCase()} ${attack.toUpperCase()}!`,
+			content:`${attacker} ${action.toUpperCase()} ${target} WITH ${article.toUpperCase()} ${randomArrayItem(adjectives).toUpperCase()} ${attack.toUpperCase()}!`,
 			allowedMentions: { parse: ['users'], repliedUser: false }
 		})
 	},
