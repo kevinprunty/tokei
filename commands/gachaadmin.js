@@ -35,6 +35,15 @@ module.exports = {
 
         
 	async execute(interaction) {
+        // Check if the user has the right role
+        // Role ID: 968274336999936100
+        const gachaTeamRole = interaction.member.roles.cache.get('968274336999936100');
+        if(!gachaTeamRole){
+            return interaction.reply({
+                content: "You aren't part of the gacha team", 
+                ephemeral: true
+            })
+        }
         // Create
         if (interaction.options.getSubcommand() === 'create'){
             const name = interaction.options.getString('name');

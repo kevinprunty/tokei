@@ -36,6 +36,7 @@ client.once('ready', async () => {
     console.log('Conencted to the database');
 
     // Set command permissions
+    
     // Gacha admin
     // Role: : 968274336999936100
     // Command ID: 968273941573541948
