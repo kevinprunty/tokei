@@ -120,13 +120,10 @@ module.exports = {
 
 		const adjectiveFirstLetter = adjective.charAt(0);
 		if (['a','e','i','o','u'].includes(adjectiveFirstLetter)){
-			console.log(`Using 'an'. charAt(0) of ${adjective} = ${adjectiveFirstLetter}`);
 			article = 'an';
 		} else if (pluralAttacks.includes(attack)) {
-			console.log('Using "some"');
 			article = "some";
 		} else { 
-			console.log(`Using 'a'. charAt(0) of ${adjective} = ${adjectiveFirstLetter}`);
 			article = 'a';
 		}
 
@@ -134,7 +131,7 @@ module.exports = {
 		const attacker = interaction.user;
 
 		await interaction.reply({
-			content:`${attacker} ${action.toUpperCase()} ${target} WITH ${article.toUpperCase()} ${randomArrayItem(adjectives).toUpperCase()} ${attack.toUpperCase()}!`,
+			content:`${attacker} ${action.toUpperCase()} ${target} WITH ${article.toUpperCase()} ${adjective.toUpperCase()} ${attack.toUpperCase()}!`,
 			allowedMentions: { parse: ['users'], repliedUser: false }
 		})
 	},
