@@ -112,11 +112,12 @@ module.exports = {
 			action = "hits";
 		}
 
-		if (['a','e','i','o','u'].includes(adjective.charAt(0))){
-			console.log(`Using 'an'. charAt(0) = ${adjective.charAt(0)}`);
+		const adjectiveFirstLetter = adjective.charAt(0);
+		if (['a','e','i','o','u'].includes(adjectiveFirstLetter)){
+			console.log(`Using 'an'. charAt(0) = ${adjectiveFirstLetter}`);
 			article = 'an'
 		} else { 
-			console.log(`Using 'a'. charAt(0) = ${adjective.charAt(0)}`);
+			console.log(`Using 'a'. charAt(0) = ${adjectiveFirstLetter}`);
 			article = 'a'
 		}
 
