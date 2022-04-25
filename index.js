@@ -38,6 +38,13 @@ client.once('ready', async () => {
     // Set command permissions
     // Gacha admin
     // Role: : 968274336999936100
+    // Command ID: 968273941573541948
+    const gachaAdmin = await client.guilds.cache.get(process.env.GUILD_ID).commands.fetch('968273941573541948');
+    await gachaAdmin.permissions.add({
+        id: '968274336999936100',
+        type: 'ROLE',
+        permission: true,
+    });
 
 });
 

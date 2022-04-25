@@ -35,7 +35,6 @@ module.exports = {
 
         
 	async execute(interaction) {
-        console.log("Gacha admin command id: ", interaction);
         // Create
         if (interaction.options.getSubcommand() === 'create'){
             const name = interaction.options.getString('name');
