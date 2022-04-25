@@ -54,6 +54,7 @@ const hitsAttacks = [
 	'shoryuken',
 	'destructo disc',
 	'crowbar',
+	'mama mia',
 
 ];
 
@@ -134,7 +135,8 @@ const adjectives = [
 	'greedy',
 	'prideful',
 	"unstoppable",
-	"weak"
+	"weak", 
+	'wake-up'
 ];
 
 const randomArrayItem = (array) => {
