@@ -120,13 +120,13 @@ module.exports = {
 
 		const adjectiveFirstLetter = adjective.charAt(0);
 		if (['a','e','i','o','u'].includes(adjectiveFirstLetter)){
-			console.log(`Using 'an'. charAt(0) = ${adjectiveFirstLetter}`);
+			console.log(`Using 'an'. charAt(0) of ${adjective} = ${adjectiveFirstLetter}`);
 			article = 'an';
 		} else if (pluralAttacks.includes(attack)) {
 			console.log('Using "some"');
 			article = "some";
 		} else { 
-			console.log(`Using 'a'. charAt(0) = ${adjectiveFirstLetter}`);
+			console.log(`Using 'a'. charAt(0) of ${adjective} = ${adjectiveFirstLetter}`);
 			article = 'a';
 		}
 
