@@ -58,7 +58,9 @@ const hitsAttacks = [
 	'car', 
 	'can of bang energy drink', 
 	'powerbomb', 
-	'spoiler'
+	'spoiler', 
+	'diamond cutter',
+	'RKO OUTTA NOWHERE'
 ];
 
 const pluralAttacks = [
