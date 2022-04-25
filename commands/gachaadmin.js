@@ -5,6 +5,7 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('gachaadmin')
 		.setDescription('Handle the gacha from the staff side')
+        // .defaultPermission(false)
         .addSubcommand(subcommand => 
             subcommand
                 .setName('create')
@@ -34,7 +35,7 @@ module.exports = {
 
         
 	async execute(interaction) {
-
+        console.log("Gacha admin command id: ", interaction.id);
         // Create
         if (interaction.options.getSubcommand() === 'create'){
             const name = interaction.options.getString('name');
