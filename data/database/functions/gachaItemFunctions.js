@@ -1,4 +1,5 @@
 // Require Model
+const GatchaItem = require('../models/GatchaItem.js');
 const GachaItem = require('../models/GatchaItem.js');
 
 // CRUD Functions
@@ -23,6 +24,10 @@ const getHighestId = async () => {
     return sortDescending.shift();
 }
 
+const getByRarity = (rarity) => {
+    return GatchaItem.find({rarity}).exec();
+}
+
 // UPDATE // 
 const updateGacha = (id, update) => {
     return GachaItem.updateOne({gachaId: id}, update);
@@ -39,6 +44,7 @@ module.exports = {
     getGacha,
     getGachaByName,
     getHighestId,
+    getByRarity,
     updateGacha,
     deleteGacha
 }

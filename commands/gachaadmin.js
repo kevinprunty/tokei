@@ -79,7 +79,7 @@ module.exports = {
         }
 
 
-        // Delete Item
+        // Delete
         if (interaction.options.getSubcommand() === 'delete'){
             const id = interaction.options.getNumber('id');
             await interaction.deferReply();

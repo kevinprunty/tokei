@@ -5,6 +5,9 @@ const fs = require('fs');
 const fighter = require('./functions/fighterFunctions.js');
 const gachaItem = require('./functions/gachaItemFunctions.js');
 
+// Helper tools
+const randomRarity = require('../../tools/gachaWeighting.js');
+
 
 // Actual database functions
 const fightMode = {
@@ -43,6 +46,9 @@ const gacha = {
    }, 
    deleteGacha(id){
       return gachaItem.deleteGacha(id);
+   }, 
+   getRandomGachaRarity(){
+      return gachaItem.getByRarity(randomRarity());
    }
 
 }
