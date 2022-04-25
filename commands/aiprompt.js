@@ -11,7 +11,7 @@ module.exports = {
 				.setRequired(true)),
 	async execute(interaction) {
 		const prompt = interaction.options.getString('prompt');
-        await interaction.reply('Getting AI response');
+        await interaction.deferReply();
         const response = await getResponse(prompt);
         if (!response) {
             await interaction.editReply({content:"The AI responses are broken at the moment!"});
