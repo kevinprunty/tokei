@@ -38,11 +38,33 @@ const hitsAttacks = [
 	'mach punch',
 	'seismic toss', 
 	'Signature 619',
-	'West Coast Pop', 
+	'West Coast Pop',
+	'dragon punch',
+	'pot of greed', 
+	'one-inch punch', 
+	'pink slip', 
+	'headbutt',
+	'open-handed strike',
+	'hundred hand slap',
+	'spinning piledriver',
+	'tiger knee',
+	'split punch',
+	'hurricane kick',
+	'Tatsumaki Senpukyaku',
+	'shoryuken',
+	'destructo disc',
+	'crowbar',
+
 ];
 
 const pluralAttacks = [
-	'facts and logic'
+	'facts and logic', 
+	'energy beams',
+	'thrown hammers',
+	'sweet nothings', 
+	'depressing thoughts',
+	'thoughts and prayers', 
+	'flaming arrows'
 ]
 
 const sliceAttacks = [
@@ -50,7 +72,8 @@ const sliceAttacks = [
 	'masamune',
 	'photon edge',
 	'slicey slice', 
-	'scythe'
+	'scythe', 
+	'plastic knife'
 ];
 const stabAttacks = [
 	'dagger',
@@ -58,7 +81,8 @@ const stabAttacks = [
 	'stabbity stab', 
 	'spear',
 	'pike',
-	'plastic fork'
+	'plastic fork', 
+	'plastic spoon'
 ];
 
 const shootAttacks = [
@@ -67,7 +91,14 @@ const shootAttacks = [
 	'laser gun',
 	'flamethrower', 
 	'bow and arrow',
-	'missile'
+	'missile', 
+	'special beam cannon',
+	'kamehameha', 
+	'death beam', 
+	'galick gun', 
+	'poison arrow', 
+	'hadouken',
+	'fireball'
 ]
 
 const attacks = [...hitsAttacks, ...sliceAttacks, ...stabAttacks, ...shootAttacks, ...pluralAttacks]
@@ -88,6 +119,22 @@ const adjectives = [
 	'intimidating',
 	'appropriate',
 	'inappropriate',
+	'scary',
+	'spooky',
+	'',
+	'simple',
+	'huge',
+	'small',
+	'large',
+	'massive',
+	'tiny',
+	'microscopic',
+	'poorly placed',
+	'sexy', 
+	'greedy',
+	'prideful',
+	"unstoppable",
+	"weak"
 ];
 
 const randomArrayItem = (array) => {
