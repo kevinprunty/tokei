@@ -116,6 +116,7 @@ module.exports = {
 			console.log(`Using 'an'. charAt(0) = ${adjective.charAt(0)}`);
 			article = 'an'
 		} else { 
+			console.log(`Using 'a'. charAt(0) = ${adjective.charAt(0)}`);
 			article = 'a'
 		}
 
