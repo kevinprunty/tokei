@@ -36,8 +36,14 @@ const hitsAttacks = [
 	'jump kick',
 	'karate chop',
 	'mach punch',
-	'seismic toss'
+	'seismic toss', 
+	'Signature 619',
+	'West Coast Pop', 
 ];
+
+const pluralAttacks = [
+	'facts and logic'
+]
 
 const sliceAttacks = [
 	'katana',
@@ -64,7 +70,7 @@ const shootAttacks = [
 	'missile'
 ]
 
-const attacks = [...hitsAttacks, ...sliceAttacks, ...stabAttacks, ...shootAttacks]
+const attacks = [...hitsAttacks, ...sliceAttacks, ...stabAttacks, ...shootAttacks, ...pluralAttacks]
 
 const adjectives = [
 	'vicious',
@@ -115,10 +121,13 @@ module.exports = {
 		const adjectiveFirstLetter = adjective.charAt(0);
 		if (['a','e','i','o','u'].includes(adjectiveFirstLetter)){
 			console.log(`Using 'an'. charAt(0) = ${adjectiveFirstLetter}`);
-			article = 'an'
+			article = 'an';
+		} else if (pluralAttacks.includes(attack)) {
+			console.log('Using "some"');
+			article = "some";
 		} else { 
 			console.log(`Using 'a'. charAt(0) = ${adjectiveFirstLetter}`);
-			article = 'a'
+			article = 'a';
 		}
 
 		const target = interaction.options.getUser('user');
