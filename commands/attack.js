@@ -55,7 +55,7 @@ const hitsAttacks = [
 	'destructo disc',
 	'crowbar',
 	'mama mia',
-
+	'car'
 ];
 
 const pluralAttacks = [
@@ -136,7 +136,9 @@ const adjectives = [
 	'prideful',
 	"unstoppable",
 	"weak", 
-	'wake-up'
+	'wake-up',
+	'plus on block', 
+	'serious'
 ];
 
 const randomArrayItem = (array) => {
