@@ -93,7 +93,7 @@ module.exports = {
                         ephemeral: true
                     })
                 }
-                gacha.deleteGacha(id);
+                await gacha.deleteGacha(id);
                 return interaction.editReply({
                     content: `#${item.gachaId}: ${item.name} is no more!`
                 })

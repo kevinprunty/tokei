@@ -52,8 +52,9 @@ client.once('ready', async () => {
         }
     ]
 
+    console.log("Setting permissions");
     await client.guilds.cache.get(process.env.GUILD_ID)?.commands.permissions.set({ fullPermissions })
-
+    console.log("Permissions set");
 });
 
 
