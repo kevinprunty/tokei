@@ -34,6 +34,11 @@ client.once('ready', async () => {
     console.log('Connecting to the database');
     const connection = await mongoose.connect(`mongodb+srv://admin:${process.env.DB_PASS}@cluster0.dumc6.mongodb.net/tokei?retryWrites=true&w=majority`);
     console.log('Conencted to the database');
+
+    // Set command permissions
+    // Gacha admin
+    // Role: : 968274336999936100
+
 });
 
 
