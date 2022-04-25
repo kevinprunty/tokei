@@ -56,7 +56,8 @@ const hitsAttacks = [
 	'crowbar',
 	'mama mia',
 	'car', 
-	'can of bang energy drink'
+	'can of bang energy drink', 
+	'powerbomb'
 ];
 
 const pluralAttacks = [
@@ -103,7 +104,12 @@ const shootAttacks = [
 	'fireball'
 ]
 
-const attacks = [...hitsAttacks, ...sliceAttacks, ...stabAttacks, ...shootAttacks, ...pluralAttacks]
+const destroyAttacks = [
+	'facts and logic'
+]
+
+const attacksSet = new Set([...hitsAttacks, ...sliceAttacks, ...stabAttacks, ...shootAttacks, ...pluralAttacks, ...destroyAttacks]); // Remove duplicates
+const attacks = [...attacksSet];
 
 const adjectives = [
 	'vicious',
@@ -167,6 +173,8 @@ module.exports = {
 			action = "stabs";
 		} else if (shootAttacks.includes(attack)) {
 			action = "shoots";
+		} else if (destroyAttacks.includes(attack)) {
+			action = "destroys";
 		} else {
 			action = "hits";
 		}
