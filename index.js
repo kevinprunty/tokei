@@ -41,7 +41,7 @@ client.once('ready', async () => {
 // Commands
 client.on('interactionCreate', async interaction => {
     if (!interaction.isCommand()) return;
-
+    console.log(`${interaction.user.username} used ${interaction.commandName}.`)
     // Command handling
     const command = client.commands.get(interaction.commandName);
 
