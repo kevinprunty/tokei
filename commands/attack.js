@@ -150,7 +150,8 @@ const adjectives = [
 	'plus on block', 
 	'serious', 
 	'speedy', 
-	'poorly timed'
+	'poorly timed', 
+	'sweaty'
 ];
 
 const randomArrayItem = (array) => {
