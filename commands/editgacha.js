@@ -53,7 +53,7 @@ module.exports = {
                 })
 
             } catch(err) {
-                console.error(err.message);
+                console.error(err);
                 return interaction.editReply({
                     content: "Problem editing entry!", 
                     ephemeral: true
@@ -85,7 +85,7 @@ module.exports = {
                 })
                 
             } catch(err) {
-                console.error(err.message);
+                console.error(err);
                 return interaction.editReply({
                     content: "Problem editing entry!", 
                     ephemeral: true
