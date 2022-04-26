@@ -31,7 +31,12 @@ module.exports = {
             subcommand
                 .setName('getinfo')
                 .setDescription('Get info on a gacha item')
-                .addStringOption(option => option.setName('gachaname').setDescription('The name of the item you are looking for').setRequired(true))),
+                .addStringOption(option => option.setName('gachaname').setDescription('The name of the item you are looking for').setRequired(true)))
+        .addSubcommand(subcommand => 
+            subcommand
+                .setName('getbynumber')
+                .setDescription('Get a gacha item by its number')
+                .addNumberOption(option => option.setName('id').setDescription('The number of the gacha item').setRequired(true))),
 
         
 	async execute(interaction) {
@@ -106,6 +111,8 @@ module.exports = {
             }
         }
 
+
+        // Get info
         if (interaction.options.getSubcommand() === 'getinfo'){
             const name = interaction.options.getString('gachaname');
             await interaction.deferReply();
@@ -114,6 +121,26 @@ module.exports = {
                 const resultString = await gacha.getGachasStringByName(name);
                 return interaction.editReply({
                     content: `Found items: ${resultString}`
+                })
+            } catch (error) {
+                console.error(error.message);
+                return interaction.editReply({
+                    content: "Command broke, sorry! Tell Toaster.",
+                    ephemeral: true
+                })
+            }
+        }
+
+        // Get by number
+        if (interaction.options.getSubcommand() === 'getbynumber'){
+            const id = interaction.options.getNumber('id');
+            await interaction.deferReply();
+
+            try{
+                const item = await gacha.getGachaById(id);
+                const resultString = `#${item.gachaId}: ${item.name} (${item.rarity}). ${item.description}`;
+                return interaction.editReply({
+                    content: `Found item: ${resultString}`
                 })
             } catch (error) {
                 console.error(error.message);
