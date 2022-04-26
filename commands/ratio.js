@@ -24,6 +24,7 @@ const ratios = [
 	'grrrr bark bark bark', 
 	'anime pfp',
 	'ratio again',
+	'maidenless'
 ]
 
 const no = [
@@ -48,7 +49,7 @@ const randomArrayItem = (array) => {
 
 const randomNumberOfRatios = () => {
 	const min = 3;
-	const max = 7;
+	const max = 13;
 
 	return Math.floor(Math.random() * (max - min + 1) + min)
 }
