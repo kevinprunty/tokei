@@ -120,7 +120,8 @@ module.exports = {
             try{
                 const resultString = await gacha.getGachasStringByName(name);
                 return interaction.editReply({
-                    content: `Found items: ${resultString}`
+                    content: `Found items: ${resultString}`,
+                    allowedMentions: { parse: ['users'], repliedUser: false }
                 })
             } catch (error) {
                 console.error(error.message);
@@ -140,7 +141,8 @@ module.exports = {
                 const item = await gacha.getGachaById(id);
                 const resultString = `#${item.gachaId}: ${item.name} (${item.rarity}). ${item.description}`;
                 return interaction.editReply({
-                    content: `Found item: ${resultString}`
+                    content: `Found item: ${resultString}`,
+                    allowedMentions: { parse: ['users'], repliedUser: false }
                 })
             } catch (error) {
                 console.error(error.message);
