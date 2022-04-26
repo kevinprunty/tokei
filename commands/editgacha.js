@@ -44,7 +44,7 @@ module.exports = {
                     })
                 }
                 // Update 
-                const update = {...selection};
+                const update = selection;
                 update.name = newName;
                 console.log(update);
                 await gacha.updateGacha(id, update);
@@ -77,7 +77,7 @@ module.exports = {
                 }
 
                 // Update 
-                const update = {...selection};
+                const update = selection;
                 update.description = description;
                 await gacha.updateGacha(id, update);
                 return interaction.editReply({
