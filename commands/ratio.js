@@ -47,7 +47,10 @@ const ratios = [
 	'got a strike',
 	'bad game',
 	'horrendous vibes',
-	'bot'
+	'bot', 
+	'you have scurvy',
+	'plundered',
+	'marooned'
 
 ]
 
