@@ -24,7 +24,31 @@ const ratios = [
 	'grrrr bark bark bark', 
 	'anime pfp',
 	'ratio again',
-	'maidenless'
+	'maidenless', 
+	'ruh roh',
+	'typo',
+	'no nitro',
+	'bad name color',
+	'android',
+	'iphone',
+	'crestless',
+	'Loss.jpg',
+	'rank 10',
+	'bad shirt',
+	'persona fan',
+	'hat goomba', 
+	'comically large hat',
+	'mobile',
+	'cried',
+	'FBI called',
+	'dripless',
+	'absorption',
+	'obvious shill',
+	'got a strike',
+	'bad game',
+	'horrendous vibes',
+	'bot'
+
 ]
 
 const no = [
@@ -38,7 +62,9 @@ const no = [
 	'likes',
 	'friends',
 	'stars', 
-	'upvotes'
+	'upvotes', 
+	'smitches', 
+	'rollback'
 
 ]
 
@@ -49,7 +75,7 @@ const randomArrayItem = (array) => {
 
 const randomNumberOfRatios = () => {
 	const min = 3;
-	const max = 13;
+	const max = 10;
 
 	return Math.floor(Math.random() * (max - min + 1) + min)
 }
