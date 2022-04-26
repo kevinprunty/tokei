@@ -16,7 +16,7 @@ module.exports = {
         const randomIndex = Math.floor(Math.random() * randomGachaRarityList.length);
         const gachaPull = randomGachaRarityList[randomIndex];
 		await interaction.reply({
-			content:`You pulled #${gachaPull.gachaId} ${gachaPull.name} (${gachaPull.rarity})! ${gachaPull.description}`,
+			content:`You pulled #${gachaPull.gachaId} ${gachaPull.name} (${gachaPull.rarity.toUpperCase()})! ${gachaPull.description}`,
 		})
 	},
 };
