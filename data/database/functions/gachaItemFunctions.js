@@ -24,6 +24,10 @@ const getHighestId = async () => {
     return sortDescending.shift();
 }
 
+const getAll = async () => {
+    return GachaItem.find({}).sort({ gachaId: 'asc'});
+}
+
 const getByRarity = (inputRarity) => {
     return GatchaItem.find({$or:[{rarity: inputRarity.toUpperCase()}, {rarity: inputRarity.toLowerCase()}]}).exec();
 }
@@ -46,5 +50,6 @@ module.exports = {
     getHighestId,
     getByRarity,
     updateGacha,
-    deleteGacha
+    deleteGacha, 
+    getAll
 }

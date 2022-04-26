@@ -52,6 +52,9 @@ const gacha = {
    }, 
    updateGacha(id, update){
       return gachaItem.updateGacha(id, update);
+   }, 
+   getAll(){
+      return gachaItem.getAll();
    }
 
 }

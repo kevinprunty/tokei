@@ -60,7 +60,8 @@ const hitsAttacks = [
 	'powerbomb', 
 	'spoiler', 
 	'diamond cutter',
-	'RKO OUTTA NOWHERE'
+	'RKO OUTTA NOWHERE', 
+	'ratio'
 ];
 
 const pluralAttacks = [
