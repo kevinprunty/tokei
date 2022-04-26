@@ -15,9 +15,9 @@ module.exports = {
 
 
         if (hotNumber === 0){
-            result = tails;
+            result = 'tails';
         } else {
-            result = heads;
+            result = 'heads';
         }
 
 		await interaction.reply({ content:`You flipped a coin. It's ${result}!`})
