@@ -21,7 +21,9 @@ const ratios = [
 	'short arms', 
 	'game over', 
 	'unga bunga',
-	'grrrr bark bark bark',
+	'grrrr bark bark bark', 
+	'anime pfp',
+	'ratio again',
 ]
 
 const no = [
