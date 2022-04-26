@@ -50,7 +50,8 @@ const ratios = [
 	'bot', 
 	'you have scurvy',
 	'plundered',
-	'marooned'
+	'marooned', 
+	'time to starve'
 
 ]
 
