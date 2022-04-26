@@ -49,6 +49,9 @@ const gacha = {
    }, 
    getRandomGachaRarity(){
       return gachaItem.getByRarity(randomRarity());
+   }, 
+   updateGacha(id, update){
+      return gachaItem.updateGacha(id, update);
    }
 
 }
