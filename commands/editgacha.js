@@ -37,6 +37,7 @@ module.exports = {
             try{
                 // Get 
                 const selection = await gacha.getGachaById(id);
+                const selectionName = selection.name;
                 if (!selection){
                     return interaction.editReply({
                         content: "That id doesn't exist!", 
@@ -46,10 +47,9 @@ module.exports = {
                 // Update 
                 const update = selection;
                 update.name = newName;
-                console.log(update);
                 await gacha.updateGacha(id, update);
                 return interaction.editReply({
-                    content: `${selection.name} updated to ${newName}!`, 
+                    content: `${selectionName} updated to ${newName}!`, 
                     ephemeral: true
                 })
 
@@ -69,6 +69,7 @@ module.exports = {
             try{
                 // Get 
                 const selection = await gacha.getGachaById(id);
+                const selectionName = selection.name;
                 if (!selection){
                     return interaction.editReply({
                         content: "That id doesn't exist!", 
@@ -81,7 +82,7 @@ module.exports = {
                 update.description = description;
                 await gacha.updateGacha(id, update);
                 return interaction.editReply({
-                    content: `${selection.name}'s description is updated!`, 
+                    content: `${selectionName}'s description is updated!`, 
                     ephemeral: true
                 })
                 
