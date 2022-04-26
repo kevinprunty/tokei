@@ -46,6 +46,7 @@ module.exports = {
                 // Update 
                 const update = {...selection};
                 update.name = newName;
+                console.log(update);
                 await gacha.updateGacha(id, update);
                 return interaction.editReply({
                     content: `${selection.name} updated to ${newName}!`, 
