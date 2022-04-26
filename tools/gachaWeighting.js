@@ -1,5 +1,5 @@
 const gachaRarities = [
-    {rarity: 'F', weight: 3},
+    {rarity: 'F', weight: 2}, // ZARUDE SANDSTORM
     {rarity: 'C', weight: 50},
     {rarity: 'B', weight: 25},
     {rarity: 'A', weight: 10},
