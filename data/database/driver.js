@@ -29,7 +29,7 @@ const gacha = {
       const nextGachaId = highestGacha ? Number.parseInt(highestGacha.gachaId)+1 : 1;
       const gachaObject = {
          name,
-         rarity,
+         rarity: rarity.toUpperCase(),
          gachaId: nextGachaId, 
          description
       }

@@ -25,7 +25,7 @@ const getHighestId = async () => {
 }
 
 const getByRarity = (inputRarity) => {
-    return GatchaItem.find({rarity: inputRarity}).exec();
+    return GatchaItem.find({rarity: inputRarity.toUpperCase()}).exec();
 }
 
 // UPDATE // 
