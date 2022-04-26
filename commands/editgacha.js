@@ -63,7 +63,7 @@ module.exports = {
         }
 
         // Change description
-        if (interaction.options.getSubcommand() === 'name'){
+        if (interaction.options.getSubcommand() === 'description'){
             const id = interaction.options.getNumber('id');
             const description = interaction.options.getString('description');
             try{
