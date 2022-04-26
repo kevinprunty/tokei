@@ -11,15 +11,16 @@ module.exports = {
 				.setRequired(true)),
 	async execute(interaction) {
 		const prompt = interaction.options.getString('prompt');
-        await interaction.deferReply();
+
 
 		if (prompt.split(' ').length < 5){
-			return interaction.editReply({
+			return interaction.reply({
 				content: "Try using a prompt with at least 5 words.",
 				ephemeral: true
 			})
 		}
 
+		await interaction.deferReply();
         const response = await getResponse(prompt);
         if (!response) {
             await interaction.editReply({content:"The AI responses are broken at the moment!"});
