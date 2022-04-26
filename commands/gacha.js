@@ -13,6 +13,7 @@ module.exports = {
                 ephemeral: true
             })
         }
+        console.log(randomGachaRarityList);
 
         const gachaPull = randomGachaRarityList[Math.floor(Math.random * randomGachaRarityList.length)];
 
