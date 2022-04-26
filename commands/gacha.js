@@ -6,8 +6,8 @@ module.exports = {
 		.setName('gacha')
 		.setDescription('Pull from the EXP Gacha!'),
 	async execute(interaction) {
-        const randomGachaRarityList = await gacha.getRandomGachaRarity();
-        if (randomGachaRarityList.length = 0){
+        const randomGachaRarityList = await gacha.getRandomGachaRarity();)
+        if (randomGachaRarityList.length == 0){
             return interaction.reply({
                 content: "There isn't anything in that rarity!", 
                 ephemeral: true
