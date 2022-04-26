@@ -17,7 +17,6 @@ const getRarity = () => {
     }
 
     const randomIndex = Math.floor(Math.random() * weightedRarities.length);
-    console.log("getRarity: ", weightedRarities[randomIndex])
     return weightedRarities[randomIndex];
 }
 
