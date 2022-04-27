@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require('@discordjs/builders');
 const { getResponse } = require('../tools/ai/prompt.js');
 
 module.exports = {
+	
 	data: new SlashCommandBuilder()
 		.setName('aiprompt')
 		.setDescription('Prompt an ai for a response.')
@@ -10,6 +11,16 @@ module.exports = {
 				.setDescription('The prompt for the AI')
 				.setRequired(true)),
 	async execute(interaction) {
+
+		// Check if the user has the right role
+		// Role ID: 968274336999936100
+		const tokeiTeamRole = interaction.member.roles.cache.get('968274336999936100');
+		if(!tokeiTeamRole){
+			return interaction.reply({
+				content: "The AI Prompt is currently disabled unless you're on the Tokei Team.\nI'm currently looking for ways to raise money to fund the AI.\n-Toaster", 
+				ephemeral: true
+			})
+		}
 		const prompt = interaction.options.getString('prompt');
 
 

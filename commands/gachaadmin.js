@@ -45,7 +45,7 @@ module.exports = {
         const gachaTeamRole = interaction.member.roles.cache.get('968274336999936100');
         if(!gachaTeamRole){
             return interaction.reply({
-                content: "You aren't part of the gacha team", 
+                content: "You aren't part of the Tokei team.", 
                 ephemeral: true
             })
         }
