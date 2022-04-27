@@ -51,8 +51,9 @@ const ratios = [
 	'you have scurvy',
 	'plundered',
 	'marooned', 
-	'time to starve'
-
+	'time to starve',
+	'updated autopsy report',
+	'no evidence'
 ]
 
 const no = [
