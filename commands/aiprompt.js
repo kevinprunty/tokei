@@ -17,7 +17,7 @@ module.exports = {
 		const tokeiTeamRole = interaction.member.roles.cache.get('968274336999936100');
 		if(!tokeiTeamRole){
 			return interaction.reply({
-				content: "The AI Prompt is currently disabled unless you're on the Tokei Team.\nI'm currently looking for ways to raise money to fund the AI.\n-Toaster", 
+				content: "The AI Prompt is currently disabled unless you're on the Tokei Team.\nI'm currently looking for alternative AI engines.\n-Toaster", 
 				ephemeral: true
 			})
 		}
