@@ -60,8 +60,7 @@ module.exports = {
 		const seed = Math.floor(Math.random()* (question.length % 10));
 
 		let selectedArray;
-		
-		for (let i; i < seed; i++){
+		for (let i = 0; i <= seed; i++){
 			selectedArray = randomArrayItem(answersArrays);
 		}
 
