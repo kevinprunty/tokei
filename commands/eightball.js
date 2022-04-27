@@ -68,7 +68,7 @@ module.exports = {
 		const answer = randomArrayItem(selectedArray);
 
 
-		const responseMessage = `Your question: ${question}\nBot's answer:${answer}`;
+		const responseMessage = `Your question: ${question}\nBot's answer: ${answer}`;
 		await interaction.reply({
 			content:responseMessage,
 		})
