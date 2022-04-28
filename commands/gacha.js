@@ -1,5 +1,6 @@
 const { gacha } = require('../data/database/driver.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('gacha')
