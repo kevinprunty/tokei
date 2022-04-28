@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const {MessageAttachment} = require('discord.js');
+const { MessageEmbed, MessageAttachment} = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -22,10 +22,13 @@ module.exports = {
 		const outputUrl = `https://api.jeyy.xyz/image/patpat?image_url=${url}.gif`
 		const attachment = new MessageAttachment(outputUrl, 'patpat.gif');
 
+		const embed = new MessageEmbed()
+			.attachFiles(attachment)
+			.setImage('attachment://patpat.gif');
 
 
 		await interaction.reply({
-			attachments: [attachment]
+			embeds: [embed]
 		})
 	},
 };
