@@ -1,8 +1,8 @@
 // Require model
 const Fighter = require('../models/Fighter.js');
 
-// CRUD Functions
 
+// CRUD Functions
 // CREATE // 
 const createFighter = (userId) => {
     const newFighter = new Fighter({userId});
@@ -16,7 +16,7 @@ const getFighter = (id) => {
 
 // UPDATE // 
 const updateFighter = (id, update) => {
-    
+    return Fighter.updateOne({userId: id}, update);
 }
 
 // DELETE // 

@@ -20,8 +20,16 @@ module.exports = {
                 .setDescription('Get the stats of yourself or another fighter.')
                 .addUserOption(option => option.setName("user").setDescription("The user you want the info of. Leave blank for yourself."))),
 	async execute(interaction) {
+        // Check if the user has the right role
+        // Role ID: 968274336999936100
+        const tokeiTeamRole = interaction.member.roles.cache.get('968274336999936100');
+        if(!tokeiTeamRole){
+            return interaction.reply({
+                content: "You aren't part of the Tokei team.", 
+                ephemeral: true
+            })
+        }
         const userId = interaction.user.id;
-        return interaction.reply({content: "This function is currently under construction!", ephemeral: true});
         // Register
         if(interaction.options.getSubcommand() === 'register'){
             
