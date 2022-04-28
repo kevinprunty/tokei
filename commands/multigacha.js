@@ -35,7 +35,7 @@ module.exports = {
         const pullsStringArray = pullsArray.map(gachaPull => `[#${gachaPull.gachaId} ${gachaPull.name} (${gachaPull.rarity.toUpperCase()}): ${gachaPull.description}]`);
 
 		await interaction.reply({
-			content:`You pulled ${pullsStringArray.join(' AND ')}`,
+			content:`**You pulled**:\n\n${pullsStringArray.join('\n\n')}`,
 		})
 	},
 };
