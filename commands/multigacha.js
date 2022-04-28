@@ -10,11 +10,7 @@ module.exports = {
         .addNumberOption(option => option.setName('pulls').setDescription(`Number of pulls. Between 2-${MAX_PULLS}.`)
             .setMinValue(2).setMaxValue(MAX_PULLS)),
 	async execute(interaction) {
-        let pulls;
-        if (interaction.options.getNumber('pulls') && interaction.options.getNumber('pulls') != 0){
-            pulls = interaction.options.getNumber('pulls') || 2;
-        }
-        
+        const pulls = interaction.options.getNumber('pulls') || 2;;
         const pullsArray = [];
 
         if (pulls > MAX_PULLS || pulls < 2){
