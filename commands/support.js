@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, hideLinkEmbed } = require('@discordjs/builders');
 
 const supportLinks = [
     {
@@ -18,7 +18,7 @@ module.exports = {
         .setDescription('Show links that support Toaster and the bot.'),
     async execute(interaction){
 
-        let supportTextArray = supportLinks.map(link => `[${link.name}: ${link.link}]`);
+        let supportTextArray = supportLinks.map(link => `[${link.name}: ${hideLinkEmbed(link.link)}]`);
 
         const responseText = `Thank you for using the bot so much!\nYou don't have to support me, I will still make bot content free forever, but here are a few links where you can donate if you want.\n\n${supportTextArray.join('\n')}`
 
