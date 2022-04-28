@@ -45,9 +45,9 @@ module.exports = {
 		
 		  try {
 			const response = await axios(options);
-			console.log(response.data);
+			const responseMessage = `You: ${message}\nBot:${response.data.AIResponse}`
 			await interaction.editReply({
-				content:`No errors. Check the log for response data.`,
+				content:responseMessage,
 				ephemeral: true
 			})
 		  } catch (error) {
