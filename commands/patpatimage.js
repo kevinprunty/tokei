@@ -24,6 +24,7 @@ module.exports = {
 
 		await interaction.deferReply();
 		const response = await fetch(outputUrl);
+		console.log(response);
 		const responseJson = response.json();
 		if (responseJson.detail && responseJson.detail.msg){
 			return interaction.editReply({
@@ -32,10 +33,8 @@ module.exports = {
 			})
 		}
 
-		const imageEmbed = new MessageEmbed().setImage(outputUrl);
-
 		await interaction.editReply({
-			embeds: [imageEmbed],
+			content: outputUrl
 		})
 	},
 };
