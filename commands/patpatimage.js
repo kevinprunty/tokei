@@ -24,7 +24,7 @@ module.exports = {
 
 
 
-		await interaction.editReply({
+		await interaction.reply({
 			attachments: [attachment]
 		})
 	},
