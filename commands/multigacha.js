@@ -1,20 +1,20 @@
 const { gacha } = require('../data/database/driver.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const MAX_PULLS = 3;
+const MAX_PULLS = 6;
 
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('multigacha')
 		.setDescription('Pull multiple from the EXP Gacha!')
-        .addNumberOption(option => option.setName('pulls').setDescription(`Number of pulls. Between 1-${MAX_PULLS}.`)),
+        .addNumberOption(option => option.setName('pulls').setDescription(`Number of pulls. Between 2-${MAX_PULLS}.`)),
 	async execute(interaction) {
-        const pulls = interaction.options.getNumber('pulls') || 1;
+        const pulls = interaction.options.getNumber('pulls') || 2;
         const pullsArray = [];
 
-        if (pulls > MAX_PULLS || pulls < 1){
+        if (pulls > MAX_PULLS || pulls < 2){
             return interaction.reply({
-                content: `Pulls should be between 1-${MAX_PULLS}`, 
+                content: `Pulls should be between 2-${MAX_PULLS}`, 
                 ephemeral: true
             })
         }
