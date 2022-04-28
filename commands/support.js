@@ -20,9 +20,7 @@ module.exports = {
 
         let supportTextArray = supportLinks.map(link => `[${link.name}: ${link.link}]`);
 
-        const responseText = `Thank you for using the bot so much!\n
-        You don't have to support me, I will still make bot content free forever, but here are a few links where you can donate if you want.\n\n
-        ${supportTextArray.join('\n')}`
+        const responseText = `Thank you for using the bot so much!\nYou don't have to support me, I will still make bot content free forever, but here are a few links where you can donate if you want.\n\n${supportTextArray.join('\n')}`
 
         await interaction.reply({
             content: responseText
