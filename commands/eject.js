@@ -53,7 +53,7 @@ module.exports = {
 
 		const url = `https://vacefron.nl/api/ejected?name=${targetName}&impostor=${imposter}&crewmate=${color}`
 		await interaction.editReply({
-			content:`${url}`,
+			content:`${user}: ${url}`,
 		})
 	},
 };
