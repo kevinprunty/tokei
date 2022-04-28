@@ -8,8 +8,8 @@ module.exports = {
 	async execute(interaction) {
 		// Check if the user has the right role
         // Role ID: 968274336999936100
-        const tokeiTeamRole = interaction.member.roles.cache.get('968274336999936100');
-        if(!tokeiTeamRole){
+        const gachaTeamRole = interaction.member.roles.cache.get('968274336999936100');
+        if(!gachaTeamRole){
             return interaction.reply({
                 content: "This command isn't ready. :)\n-Toaster", 
                 ephemeral: true
