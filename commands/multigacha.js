@@ -9,7 +9,11 @@ module.exports = {
 		.setDescription('Pull multiple from the EXP Gacha!')
         .addNumberOption(option => option.setName('pulls').setDescription(`Number of pulls. Between 2-${MAX_PULLS}.`)),
 	async execute(interaction) {
-        const pulls = interaction.options.getNumber('pulls') || 2;
+        let pulls;
+        if (interaction.options.getNumber('pulls') && interaction.options.getNumber('pulls') != 0){
+            pulls = interaction.options.getNumber('pulls') || 2;
+        }
+        
         const pullsArray = [];
 
         if (pulls > MAX_PULLS || pulls < 2){
