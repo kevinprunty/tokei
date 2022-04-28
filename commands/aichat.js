@@ -36,9 +36,9 @@ module.exports = {
 			  id: interaction.member.id
 			},
 			headers: {
-			  Authorization: process.env.RANDOM_STUFF_KEY,
+			  Authorization: process.env.RANDOM_STUFF_TOKEN,
 			  'X-RapidAPI-Host': 'random-stuff-api.p.rapidapi.com',
-			  'X-RapidAPI-Key': process.env.RANDOM_STUFF_KEY
+			  'X-RapidAPI-Key': process.env.RANDOM_STUFF_TOKEN
 			}
 		  };
 
