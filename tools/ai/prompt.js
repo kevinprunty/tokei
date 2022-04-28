@@ -1,16 +1,17 @@
 const dotenv = require('dotenv');
+const axios = require('axios').default;
 dotenv.config();
 
 async function queryModel(data) {
-	const response = await fetch(
-		"https://api-inference.huggingface.co/models/hakurei/c1-6B",
-		{
+	const response = await axios(
+		{ 
+      url : "https://api-inference.huggingface.co/models/hakurei/c1-6B",
 			headers: { Authorization: `Bearer ${process.env.HUGGING_FACE_TOKEN}` },
 			method: "POST",
-			body: JSON.stringify(data),
+			data: JSON.stringify(data),
 		}
 	);
-	const result = await response.json();
+	const result = await response.data;
 	return result;
 }
 
