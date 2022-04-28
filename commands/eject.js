@@ -44,7 +44,7 @@ module.exports = {
 		let targetName;
 		await interaction.deferReply();
 		try {
-			targetName = interaction.guild.members.cache.find(member => member.user.id === user.id).displayName;
+			targetName =  encodeURIComponent(interaction.guild.members.cache.find(member => member.user.id === user.id).displayName);
 		} catch (error) {
 			console.error(error.message);
 			return interaction.editReply({
