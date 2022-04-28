@@ -1,19 +1,32 @@
-const { Configuration, OpenAIApi } = require("openai");
 const dotenv = require('dotenv');
 dotenv.config();
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+async function queryModel(data) {
+	const response = await fetch(
+		"https://api-inference.huggingface.co/models/hakurei/c1-6B",
+		{
+			headers: { Authorization: `Bearer ${process.env.HUGGING_FACE_TOKEN}` },
+			method: "POST",
+			body: JSON.stringify(data),
+		}
+	);
+	const result = await response.json();
+	return result;
+}
+
+
 
 module.exports = {
-    getResponse: async (prompt) => {
-        const completion = await openai.createCompletion("text-davinci-002", {
-          prompt: prompt,
-          temperature: 0.9,
-          max_tokens: 1000
-        });
-        return completion.data.choices[0].text;
-      }
+    getResponse: async (query) => {
+
+      const compositeQuery = `${query}`
+
+      const rawResponse = await queryModel({"inputs": {
+        "past_user_inputs": [],
+        "generated_responses": [],
+        "text": compositeQuery
+      }});
+      console.log(rawResponse);
+      return "CURRENTLY DEBUGGING- CHECK LOGS";
+    }
 } 
