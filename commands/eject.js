@@ -1,5 +1,6 @@
 
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { MessageAttachment, MessageEmbed } = require('discord.js');
 
 const colors = [
 	'black',
@@ -52,8 +53,12 @@ module.exports = {
 		}
 
 		const url = `https://vacefron.nl/api/ejected?name=${targetName}&impostor=${imposter}&crewmate=${color}`
+		const embed = new MessageEmbed()
+			.setTitle(`${targetName} has been ejected...`)
+			.setImage(url);
 		await interaction.editReply({
-			content:`${user}: ${url}`,
+			content:`${user}:`,
+			embeds: [embed],
 			allowedMentions: { parse: ['users'], repliedUser: false }
 		})
 	},
