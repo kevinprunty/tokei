@@ -23,12 +23,12 @@ module.exports = {
 		const attachment = new MessageAttachment(outputUrl, 'patpat.gif');
 
 		const embed = new MessageEmbed()
-			.attachFiles(attachment)
 			.setImage('attachment://patpat.gif');
 
 
 		await interaction.reply({
-			embeds: [embed]
+			embeds: [embed], 
+			files: [attachment]
 		})
 	},
 };
