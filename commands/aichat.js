@@ -38,7 +38,7 @@ module.exports = {
 			headers: {
 			  Authorization: process.env.RANDOM_STUFF_TOKEN,
 			  'X-RapidAPI-Host': 'random-stuff-api.p.rapidapi.com',
-			  'X-RapidAPI-Key': process.env.RANDOM_STUFF_TOKEN
+			  'X-RapidAPI-Key': process.env.RAPID_API_TOKEN
 			}
 		  };
 
