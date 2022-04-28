@@ -36,7 +36,7 @@ module.exports = {
         if (!response) {
             await interaction.editReply({content:"The AI responses are broken at the moment!"});
         }
-        const compositeResponse = `Your prompt: ${prompt}\nResponse: ${response}`
+        const compositeResponse = `${response}`
 		if (compositeResponse.length > 2000){
 			try{
 				const regex = /[\s\S]{1,2000}/gm;

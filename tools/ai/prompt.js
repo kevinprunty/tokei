@@ -5,7 +5,7 @@ dotenv.config();
 async function queryModel(data) {
 	const response = await axios(
 		{ 
-      url : "https://api-inference.huggingface.co/models/hakurei/c1-6B",
+      url : "https://api-inference.huggingface.co/models/EleutherAI/gpt-j-6B",
 			headers: { Authorization: `Bearer ${process.env.HUGGING_FACE_TOKEN}` },
 			method: "POST",
 			data: JSON.stringify(data),
@@ -22,12 +22,8 @@ module.exports = {
 
       const compositeQuery = `${query}`
 
-      const rawResponse = await queryModel({"inputs": {
-        "past_user_inputs": [],
-        "generated_responses": [],
-        "text": compositeQuery
-      }});
-      console.log(rawResponse);
-      return "CURRENTLY DEBUGGING- CHECK LOGS";
+      const rawResponse = await queryModel({"inputs": compositeQuery});
+      
+      return rawResponse.generated_text;
     }
 } 
