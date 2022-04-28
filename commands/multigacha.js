@@ -7,7 +7,8 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('multigacha')
 		.setDescription('Pull multiple from the EXP Gacha!')
-        .addNumberOption(option => option.setName('pulls').setDescription(`Number of pulls. Between 2-${MAX_PULLS}.`)),
+        .addNumberOption(option => option.setName('pulls').setDescription(`Number of pulls. Between 2-${MAX_PULLS}.`)
+            .setMinValue(2).setMaxValue(MAX_PULLS)),
 	async execute(interaction) {
         let pulls;
         if (interaction.options.getNumber('pulls') && interaction.options.getNumber('pulls') != 0){
