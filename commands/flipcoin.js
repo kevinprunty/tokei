@@ -1,10 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
-const rollDice = inputSides => {
-    const sides = Math.floor(inputSides);
-    return Math.floor(Math.random() * sides + 1);
-}
-
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('flipcoin')
