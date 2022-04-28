@@ -19,7 +19,7 @@ module.exports = {
 		}
 
 
-		const outputUrl = `https://api.jeyy.xyz/image/patpat?image_url=${url}`
+		const outputUrl = `https://api.jeyy.xyz/image/patpat?image_url=${url}.gif`
 
 
 		await interaction.deferReply();
@@ -34,7 +34,7 @@ module.exports = {
 		
 
 		await interaction.editReply({
-			files: [outputUrl]
+			content: outputUrl
 		})
 	},
 };
