@@ -23,18 +23,18 @@ module.exports = {
 
 
 		await interaction.deferReply();
-		const response = await fetch(outputUrl);
-		console.log(response);
-		const responseJson = response.json();
-		if (responseJson.detail && responseJson.detail.msg){
-			return interaction.editReply({
-				content:`Validation error: $${detail.msg}`,
+		try {
+			const response = await fetch(outputUrl);
+		} catch (err) {
+			await interaction.editReply({
+				content: "Whoops.",
 				ephemeral: true
 			})
 		}
+		
 
 		await interaction.editReply({
-			content: outputUrl
+			files: [outputUrl]
 		})
 	},
 };
