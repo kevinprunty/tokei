@@ -53,12 +53,11 @@ module.exports = {
 		}
 
 		const url = `https://vacefron.nl/api/ejected?name=${targetName}&impostor=${imposter}&crewmate=${color}`
-		const embed = new MessageEmbed()
-			.setTitle(`${targetName} has been ejected...`)
-			.setImage(url);
+		// const embed = new MessageEmbed()
+		// 	.setTitle(`${targetName} has been ejected...`)
+		// 	.setImage(url);
 		await interaction.editReply({
-			content:`${user}:`,
-			embeds: [embed],
+			content:`${url}`,
 			allowedMentions: { parse: ['users'], repliedUser: false }
 		})
 	},
