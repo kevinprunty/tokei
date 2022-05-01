@@ -37,8 +37,6 @@ module.exports = {
         const value = randomArrayItem(values);
         const suit = randomArrayItem(suits);
 
-
-
         const responseText = `You drew a **${value} of ${suit}** and shuffled it back into the deck.`
 
         await interaction.reply({
