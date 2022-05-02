@@ -1,8 +1,5 @@
 const { SlashCommandBuilder} = require('@discordjs/builders');
 
-let responseText = "Prompt not processed, whoops!"
-const responseArray = [];
-
 
 const singleEvents = [
     '|{1} receives medical supplies from an unknown sponsor.',
@@ -164,22 +161,6 @@ function arraysEqual(a, b) {
   }
 
 
-  const twoTargets = (targetOne, targetTwo) => {
-    const availableTargets = [targetOne, targetTwo];
-    const usedTargets = [];
-    const configs = randomArrayItem(doubleConfigurations);
-    for (let array of configs){
-        if (arraysEqual(array, doubleEvents)){
-            const participants = shuffleArray(availableTargets)
-            responseArray.push(populateStringTwo(randomArrayItem(array), participants[0], participants[1]));
-        } else if (arraysEqual(array, singleEvents)) {
-            const participant = pickRandomNew(availableTargets, usedTargets);
-            usedTargets.push(participant);
-            responseArray.push(populateString(randomArrayItem(array), participant));
-        }
-    }
-  } 
-
 module.exports = { 
     data: new SlashCommandBuilder()
         .setName('hungergames')
@@ -188,6 +169,26 @@ module.exports = {
         .addStringOption(option => option.setName('targettwo').setDescription('Second target.'))
         .addStringOption(option => option.setName('targetthree').setDescription('Third target.')),
     async execute(interaction){
+
+        let responseText = "Prompt not processed, whoops!"
+        const responseArray = [];
+
+        const twoTargets = (target1, target2) => {
+            const availableTargets = [target1, target2];
+            const usedTargets = [];
+            const configs = randomArrayItem(doubleConfigurations);
+            for (let array of configs){
+                if (arraysEqual(array, doubleEvents)){
+                    const participants = shuffleArray(availableTargets)
+                    responseArray.push(populateStringTwo(randomArrayItem(array), participants[0], participants[1]));
+                } else if (arraysEqual(array, singleEvents)) {
+                    const participant = pickRandomNew(availableTargets, usedTargets);
+                    usedTargets.push(participant);
+                    responseArray.push(populateString(randomArrayItem(array), participant));
+                }
+            }
+          } 
+
         const targetOne = interaction.options.getString('targetone') || interaction.member.displayName;
         const targetTwo = interaction.options.getString('targettwo');
         const targetThree = interaction.options.getString('targetthree');
