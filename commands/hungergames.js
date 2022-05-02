@@ -189,9 +189,13 @@ module.exports = {
             }
           } 
 
-        const targetOne = interaction.options.getString('targetone') || interaction.member.displayName;
+        let targetOne = interaction.options.getString('targetone');
         const targetTwo = interaction.options.getString('targettwo');
         const targetThree = interaction.options.getString('targetthree');
+
+        if (!targetOne && !targetTwo && !targetThree){
+            targetOne = interaction.member.displayName;
+        }
         if (targetOne && !targetTwo && !targetThree){
             // Simple. One prompt.
             responseArray.push(populateString(randomArrayItem(singleEvents), targetOne));
