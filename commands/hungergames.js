@@ -1,5 +1,8 @@
 const { SlashCommandBuilder} = require('@discordjs/builders');
 
+let responseText = "Prompt not processed, whoops!"
+const responseArray = [];
+
 
 const singleEvents = [
     '|{1} receives medical supplies from an unknown sponsor.',
@@ -160,6 +163,23 @@ function arraysEqual(a, b) {
       return selection;
   }
 
+
+  const twoTargets = (targetOne, targetTwo) => {
+    const availableTargets = [targetOne, targetTwo];
+    const usedTargets = [];
+    const configs = randomArrayItem(doubleConfigurations);
+    for (let array of configs){
+        if (arraysEqual(array, doubleEvents)){
+            const participants = shuffleArray(availableTargets)
+            responseArray.push(populateStringTwo(randomArrayItem(array), participants[0], participants[1]));
+        } else if (arraysEqual(array, singleEvents)) {
+            const participant = pickRandomNew(availableTargets, usedTargets);
+            usedTargets.push(participant);
+            responseArray.push(populateString(randomArrayItem(array), participant));
+        }
+    }
+  } 
+
 module.exports = { 
     data: new SlashCommandBuilder()
         .setName('hungergames')
@@ -171,26 +191,19 @@ module.exports = {
         const targetOne = interaction.options.getString('targetone') || interaction.member.displayName;
         const targetTwo = interaction.options.getString('targettwo');
         const targetThree = interaction.options.getString('targetthree');
-
-        let responseText = "Prompt not processed, whoops!"
-        const responseArray = [];
-        if (targetOne && !targetTwo){
+        if (targetOne && !targetTwo && !targetThree){
             // Simple. One prompt.
             responseArray.push(populateString(randomArrayItem(singleEvents), targetOne));
+        } else if (!targetOne && targetTwo && !targetThree) {
+            responseArray.push(populateString(randomArrayItem(singleEvents), targetTwo));
+        } else if (!targetOne && !targetTwo && targetThree) {
+            responseArray.push(populateString(randomArrayItem(singleEvents), targetThree));
         } else if (targetOne && targetTwo && !targetThree) {
-            const availableTargets = [targetOne, targetTwo];
-            const usedTargets = [];
-            const configs = randomArrayItem(doubleConfigurations);
-            for (let array of configs){
-                if (arraysEqual(array, doubleEvents)){
-                    const participants = shuffleArray(availableTargets)
-                    responseArray.push(populateStringTwo(randomArrayItem(array), participants[0], participants[1]));
-                } else if (arraysEqual(array, singleEvents)) {
-                    const participant = pickRandomNew(availableTargets, usedTargets);
-                    usedTargets.push(participant);
-                    responseArray.push(populateString(randomArrayItem(array), participant));
-                }
-            }
+            twoTargets(targetOne, targetTwo);
+        } else if (!targetOne && targetTwo && targetThree) {
+            twoTargets(targetTwo, targetThree);
+        } else if (targetOne && !targetTwo && targetThree) {
+            twoTargets(targetOne, targetThree);
         } else if (targetOne && targetTwo && targetThree) {
             const availableTargets = [targetOne, targetTwo, targetThree];
             const usedTargets = [];
