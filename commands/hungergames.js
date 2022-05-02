@@ -91,7 +91,7 @@ const tripleEvents = [
     '|{1}, |{2}, and |{3} tell each other ghost stories to lighten the mood.',
     '|{1} and |{2} unsuccessfully ambush |{3} who kills them instead.',
     '|{1} and |{2} track down and kill |{3}.',
-    '|{1}, |{2}, and |{3} cheerfully sing songs together', 
+    '|{1}, |{2}, and |{3} cheerfully sing songs together.', 
     '|{1} and |{2} fight |{3}. |{3} survives.',
     '|{1} hears |{2} and |{3} talking in the distance.'
 
@@ -127,12 +127,38 @@ const populateStringThree = (string, targetOne, targetTwo, targetThree) => {
     return string.replace('|{1}', targetOne).replace('|{2}', targetTwo).replace('|{3}', targetThree);
 }
 
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffleArray(unshuffled) {
    return unshuffled
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value)
 }
+
+// https://stackoverflow.com/questions/3115982/how-to-check-if-two-arrays-are-equal-with-javascript
+function arraysEqual(a, b) {
+
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length !== b.length) return false;
+  
+    // If you don't care about the order of the elements inside
+    // the array, you should sort both arrays here.
+    // Please note that calling sort on an array will modify that array.
+    // you might want to clone your array first.
+  
+    for (var i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
+  }
+
+
+  const pickRandomNew = (a, used) => {
+      const selection = randomArrayItem(a);
+      if (used.includes(selection)) { return pickRandomNew(a, used) }
+      return selection;
+  }
 
 module.exports = { 
     data: new SlashCommandBuilder()
@@ -152,32 +178,40 @@ module.exports = {
             // Simple. One prompt.
             responseArray.push(populateString(randomArrayItem(singleEvents), targetOne));
         } else if (targetOne && targetTwo && !targetThree) {
+            const availableTargets = [targetOne, targetTwo];
+            const usedTargets = [];
             const configs = randomArrayItem(doubleConfigurations);
-            for (config of configs){
-                for (array of config){
-                    if (array === doubleEvents){
-                        const participants = shuffleArray([targetOne, targetTwo])
-                        responseArray.push(populateStringTwo(randomArrayItem(array), participants[0], participants[1]));
-                    } else if (array === singleEvents) {
-                        responseArray.push(populateString(randomArrayItem(array), targetOne));
-                    }
+            for (let array of configs){
+                if (arraysEqual(array, doubleEvents)){
+                    const participants = shuffleArray(availableTargets)
+                    responseArray.push(populateStringTwo(randomArrayItem(array), participants[0], participants[1]));
+                } else if (arraysEqual(array, singleEvents)) {
+                    const participant = pickRandomNew(availableTargets, usedTargets);
+                    usedTargets.push(participant);
+                    responseArray.push(populateString(randomArrayItem(array), participant));
                 }
             }
         } else if (targetOne && targetTwo && targetThree) {
+            const availableTargets = [targetOne, targetTwo, targetThree];
+            const usedTargets = [];
             const configs = randomArrayItem(tripleConfigurations);
-            for (config of configs){
-                for (array of config){
-                    if (array === tripleEvents){
-                        const participants = shuffleArray([targetOne, targetTwo, targetThree])
-                        responseArray.push(populateStringThree(randomArrayItem(array), participants[0], participants[1], participants[2]));
-                    } else if (array === doubleEvents){
-                        const participants = shuffleArray([targetOne, targetTwo])
-                        responseArray.push(populateStringTwo(randomArrayItem(array), participants[0], participants[1]));
-                    } else if (array === singleEvents) {
-                        responseArray.push(populateString(randomArrayItem(array), targetOne));
-                    }
+            for (let array of configs){
+                if (arraysEqual(array, tripleEvents)){
+                    const participants = shuffleArray(availableTargets)
+                    responseArray.push(populateStringThree(randomArrayItem(array), participants[0], participants[1], participants[2]));
+                } else if (arraysEqual(array, doubleEvents)){
+                    const participant1 = pickRandomNew(availableTargets, usedTargets);
+                    usedTargets.push(participant1);
+                    const participant2 = pickRandomNew(availableTargets, usedTargets);
+                    usedTargets.push(participant2);
+                    responseArray.push(populateStringTwo(randomArrayItem(array), participant1, participant2));
+                } else if (arraysEqual(array, singleEvents)) {
+                    const participant = pickRandomNew(availableTargets, usedTargets);
+                    usedTargets.push(participant);
+                    responseArray.push(populateString(randomArrayItem(array), participant));
                 }
             }
+
         }
 
         responseText = responseArray.join('\n\n');
