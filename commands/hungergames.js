@@ -1,5 +1,19 @@
 const { SlashCommandBuilder} = require('@discordjs/builders');
+// Expansions
+const EXPansion = require('../data/hg-expansion/EXPansion.js')
 
+// Config expansions
+const singleEventExpansions = [
+    ...EXPansion.singleEvents,
+]
+
+const doubleEventExpansions = [
+    ...EXPansion.doubleEvents,
+]
+
+const tripleEventExpansions = [
+    ...EXPansion.tripleEvents,
+]
 
 const singleEvents = [
     '|{1} receives medical supplies from an unknown sponsor.',
@@ -51,6 +65,7 @@ const singleEvents = [
     '|{1} tries to sleep through the entire day.',
     '|{1} travels to higher ground.',
     '|{1} thinks about winning.',
+    ...singleEventExpansions,
 ];
 
 const doubleEvents = [
@@ -82,7 +97,7 @@ const doubleEvents = [
     '|{1} kills |{2} with her own weapon.',
     '|{1} severely slices |{2} with a sword.',
     '|{1} stalks |{2}.',
-
+    ...doubleEventExpansions
 
 ]
 
@@ -93,7 +108,8 @@ const tripleEvents = [
     '|{1} and |{2} track down and kill |{3}.',
     '|{1}, |{2}, and |{3} cheerfully sing songs together.', 
     '|{1} and |{2} fight |{3}. |{3} survives.',
-    '|{1} hears |{2} and |{3} talking in the distance.'
+    '|{1} hears |{2} and |{3} talking in the distance.',
+    ...tripleEventExpansions
 
 ]
 
