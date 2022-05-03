@@ -1,6 +1,16 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { gacha } = require('../data/database/driver.js');
 
+const rarityChoices = [
+    {name: 'C', value: 'C'},
+    {name: 'B', value: 'B'},
+    {name: 'A', value: 'A'},
+    {name: 'S', value: 'S'},
+    {name: 'SS', value: 'SS'},
+    {name: 'SSS', value: 'SSS'},
+]
+
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('gachaadmin')
@@ -18,12 +28,7 @@ module.exports = {
                     .setName('rarity')
                     .setDescription('Rarity for item. [C, B, A, S, SS, SSS]')
                     .setRequired(true)
-                    .addChoice('C','C')
-                    .addChoice('B','B')
-                    .addChoice('A','A')
-                    .addChoice('S','S')
-                    .addChoice('SS','SS')
-                    .addChoice('SSS','SSS'))
+                    .addChoices(rarityChoices))
                 .addStringOption(option => option
                     .setName('description')
                     .setDescription('The short description for the item.')
