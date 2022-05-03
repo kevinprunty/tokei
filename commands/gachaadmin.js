@@ -10,6 +10,15 @@ const rarityChoices = [
     {name: 'SSS', value: 'SSS'},
 ]
 
+const rarityChoicesArray = [
+    ["C", "C"],
+    ["B", "B"],
+    ["A", "A"],
+    ["S", "S"],
+    ["SS", "SS"],
+    ["SSS", "SSS"],
+  ]
+
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -28,12 +37,13 @@ module.exports = {
                     .setName('rarity')
                     .setDescription('Rarity for item. [C, B, A, S, SS, SSS]')
                     .setRequired(true)
-                    .addChoices(rarityChoices[0])
-                    .addChoices(rarityChoices[1])
-                    .addChoices(rarityChoices[2])
-                    .addChoices(rarityChoices[3])
-                    .addChoices(rarityChoices[4])
-                    .addChoices(rarityChoices[5]))
+                    // .addChoices(rarityChoices[0])
+                    // .addChoices(rarityChoices[1])
+                    // .addChoices(rarityChoices[2])
+                    // .addChoices(rarityChoices[3])
+                    // .addChoices(rarityChoices[4])
+                    // .addChoices(rarityChoices[5])
+                    .addChoices(rarityChoicesArray))
                 .addStringOption(option => option
                     .setName('description')
                     .setDescription('The short description for the item.')
