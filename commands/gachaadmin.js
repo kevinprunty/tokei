@@ -18,7 +18,12 @@ module.exports = {
                     .setName('rarity')
                     .setDescription('Rarity for item. [C, B, A, S, SS, SSS]')
                     .setRequired(true)
-                    .addChoices(['C', 'B', 'A', 'S', 'SS', 'SSS']))
+                    .addChoice('C','C')
+                    .addChoice('B','B')
+                    .addChoice('A','A')
+                    .addChoice('S','S')
+                    .addChoice('SS','SS')
+                    .addChoice('SSS','SSS'))
                 .addStringOption(option => option
                     .setName('description')
                     .setDescription('The short description for the item.')
