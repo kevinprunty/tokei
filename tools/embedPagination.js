@@ -3,7 +3,7 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 
 
 const createButton = (buttonName, buttonLabel) => {
-    return MessageButton()
+    return new MessageButton()
         .setCustomId(buttonName.toLowerCase())
         .setLabel(buttonLabel)
         .setStyle("PRIMARY")
