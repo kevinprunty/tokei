@@ -28,7 +28,7 @@ const createButtonRow = (initiallyDisabled, sections) => {
 const paginate = async (interaction, embedPages, initiallyDisabled) => {
     const buttonRow = createButtonRow(initiallyDisabled, embedPages.length);
 
-    await interaction.editReply({
+    const reply = await interaction.editReply({
         embeds: [embedPages[0]], 
         components: [buttonRow]
     });
@@ -49,7 +49,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
 
         const filter = i => ids.includes(i.customId) && i.user.id === interaction.user.id;
         const time = 3 * 60 * 1000;
-        const collector = interaction.channel.createMessageComponentCollector({filter, time});
+        const collector = reply.createMessageComponentCollector({filter, time});
         
         let thisPage = 1;
 
