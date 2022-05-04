@@ -51,7 +51,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
         const time = 5 * 60 * 1000;
         const collector = interaction.channel.createMessageComponentCollector({filter, time});
         
-        const thisPage = 1;
+        let thisPage = 1;
 
         collector.on('collect', async i => {
             switch (i.customId) {
