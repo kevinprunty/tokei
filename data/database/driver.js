@@ -83,9 +83,9 @@ const gachaPlayer = {
             return inventoryItem.item.toString()
          });
          const foundIndex = inventoryItemIds.findIndex(id => {
+            console.log(gachaId === id);
             return gachaId === id;
          });
-        console.log('626741382543eb2b94f60dc6' === '626741382543eb2b94f60dc6')
          if (foundIndex !== -1){
             player.inventory[foundIndex].count++;
          } else {
