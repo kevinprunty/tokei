@@ -54,7 +54,6 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
         let thisPage = 1;
 
         collector.on('collect', async i => {
-            console.log("Button collected");
             switch (i.customId) {
                 case "firstpage":
                     thisPage = 1;
@@ -95,7 +94,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
         });
 
         collector.on('end', collected => {
-            console.log(collected.last());
+            await collected.last().update({components: []});
         })
             
     } catch (error) {
