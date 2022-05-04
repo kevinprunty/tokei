@@ -205,7 +205,7 @@ module.exports = {
                     fields.push(
                         {
                             name: currentItem.gachaId.toString(),
-                            value: `${currentItem.name} (${currentItem.rarity.toUpperCase()})`, 
+                            value: `${currentItem.name} (${currentItem.rarity.toUpperCase()} x${currentItem.count ? currentItem.count : 0 })`, 
                             inline: true
                         }
                     )

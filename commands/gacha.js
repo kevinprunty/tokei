@@ -54,7 +54,14 @@ module.exports = {
         }
 
 
+        // Update gacha count
+        if (!gachaPull.count) {
+            gachaPull.count = 1;
+        } else {
+            gachaPull.count++;
+        }
 
+        await gacha.updateGacha(gachaPull.gachaId, gachaPull);
 
 		await interaction.editReply({
 			content:`**You pulled** #${gachaPull.gachaId} ${gachaPull.name} (${gachaPull.rarity.toUpperCase()})! ${gachaPull.description}`,
