@@ -4,8 +4,8 @@ const GachaPlayer = require('../models/GachaPlayer.js');
 // CRUD Functions
 
 // CREATE // 
-const createGachaPlayer = (item) => {
-    const newGachaPlayer = new GachaPlayer(item);
+const createGachaPlayer = (id) => {
+    const newGachaPlayer = new GachaPlayer({userId: id});
     return newGachaPlayer.save();
 }
 
