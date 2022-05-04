@@ -94,7 +94,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
         });
 
         collector.on('end', async collected => {
-            await collected.last().update({components: []});
+            await collected.last().editReply({components: []});
         })
             
     } catch (error) {
