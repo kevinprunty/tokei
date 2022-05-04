@@ -21,6 +21,7 @@ module.exports = {
         }
 
         const playerInventory = player.inventory; // Array of objects
+        const sortedInventory = playerInventory.sort((a, b) => a.item.gachaId - b.item.gachaId);
         const inventorySize = playerInventory.length;
 
         // 25 is the field limit on embeds
@@ -42,7 +43,7 @@ module.exports = {
 
                 for (let index = 0; index < endingIndex; index++){
                     const totalIndex = index+indexOffset;
-                    const currentItem = playerInventory[totalIndex];
+                    const currentItem = sortedInventory[totalIndex];
 
                     fields.push(
                         {
