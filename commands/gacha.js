@@ -1,11 +1,33 @@
-const { gacha } = require('../data/database/driver.js');
+const { gacha, gachaPlayer } = require('../data/database/driver.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
+
+// Cached player Ids
+const gachaPlayers= [];
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('gacha')
 		.setDescription('Pull from the EXP Gacha!'),
 	async execute(interaction) {
+        const userId = interaction.user.id;
+        let player;
+        // Check if player exists in cache
+        const gachaPlayersIds = gachaPlayers.map(gachaPlayer => gachaPlayer.userId);
+
+        if (!gachaPlayersIds.includes(userId)){
+            // Check if player exists at all
+            player = gachaPlayer.getGachaPlayer(userId);
+            if (!player){
+                // Since it doesn't exist, make one
+                await gachaPlayer.initializePlayer(userId)
+                player = gachaPlayer.getGachaPlayer(userId);
+            }
+
+            gachaPlayers.push(player);
+        } else {
+            player = gachaPlayers[gachaPlayersIds.indexOf(userId)];
+        }
+
         const randomGachaRarityList = await gacha.getRandomGachaRarity();
         if (randomGachaRarityList.length == 0){
             return interaction.reply({
@@ -15,6 +37,22 @@ module.exports = {
         }
         const randomIndex = Math.floor(Math.random() * randomGachaRarityList.length);
         const gachaPull = randomGachaRarityList[randomIndex];
+
+        // Push gacha pull to player
+        const gachaId = gachaPull._id;
+
+        const pushedItem = await gachaPlayer.pushGachaItem(userId, gachaId);
+        if (!pushedItem.success){
+            throw new Error(pushedItem.error);
+        } else {
+            // Update cached player
+            player = pushedItem.player
+            gachaPlayers[gachaPlayersIds.indexOf(userId)] = player;
+        }
+
+
+
+
 		await interaction.reply({
 			content:`**You pulled** #${gachaPull.gachaId} ${gachaPull.name} (${gachaPull.rarity.toUpperCase()})! ${gachaPull.description}`,
 		})

@@ -4,6 +4,7 @@ const fs = require('fs');
 // Require all model functions 
 const fighter = require('./functions/fighterFunctions.js');
 const gachaItem = require('./functions/gachaItemFunctions.js');
+const gachaPlayers = require('./functions/gachaPlayerFunctions.js');
 
 // Helper tools
 const randomRarity = require('../../tools/gachaWeighting.js');
@@ -59,7 +60,64 @@ const gacha = {
 
 }
 
+const gachaPlayer = {
+   initializePlayer(userId){
+      return gachaPlayers.createGachaPlayer(userId);
+   }, 
+   getGachaPlayer(userId){
+      return gachaPlayers.getGachaPlayer(userId);
+   }, 
+   async pushGachaItem(userId, gachaId){
+
+      try {
+         // Get user to update
+         const player = await gachaPlayers.getGachaPlayer(userId);
+
+         // Return to ObjectIds
+         if (player.populated('inventory.item')){
+            player.depopulate('inventory.item');
+         }
+
+         // Check if item exists in inventory
+         // If it does, just increment the count
+         // If not, push the item
+         const inventory = player.inventory;
+         const inventoryItemIds = inventory.map(inventoryItem => inventoryItem.item)
+         const foundIndex = inventoryItemIds.indexOf(gachaId);
+
+         if (foundIndex !== -1){
+            player.inventory[foundIndex].count++;
+         } else {
+            player.inventory.push({
+               item: gachaId, 
+               count: 1
+            })
+         }
+
+         // Repopulate inventory
+         player.populate('inventory.item');
+
+         // Update player
+         await gachaPlayers.updateGachaPlayer(userId, player);
+         return {
+            message: "Inventory item pushed successfully",
+            success: true,
+            player
+         }
+      } catch (error) {
+         return {
+            message: "There was an error in pushing an inventory item.",
+            error,
+            success: false
+         }
+      }
+
+
+   }
+}
+
  module.exports = {
     fightMode, 
-    gacha
+    gacha, 
+    gachaPlayer
  }

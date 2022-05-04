@@ -1,6 +1,5 @@
 // Require Model
-const GatchaItem = require('../models/GatchaItem.js');
-const GachaItem = require('../models/GatchaItem.js');
+const GachaItem = require('../models/GachaItem.js');
 
 // CRUD Functions
 
