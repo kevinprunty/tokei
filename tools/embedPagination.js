@@ -47,7 +47,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
         // This code is adapted from the code Moydow showed me in #developers,
         // combined with the code on https://discordjs.guide/interactions/buttons.html#responding-to-buttons
 
-        const filter = i => ids.includes(i.customId);
+        const filter = i => ids.includes(i.customId) && i.user.id === interaction.user.id;
         const time = 5 * 60 * 1000;
         const collector = interaction.channel.createMessageComponentCollector({filter, time});
         
@@ -96,7 +96,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
             
     } catch (error) {
         // means buttons timed out, remove them
-        if (error.name === "Error [INTERACTION_COLLECTOR_ERROR]") return message.edit({components: []})
+        if (error.name === "Error [INTERACTION_COLLECTOR_ERROR]") return interaction.editReply({components: []})
             .catch(e => {if (e.name !== "DiscordAPIError") throw error;});
         // otherwise throw the error if something else went wrong
         if (error.name !== "DiscordAPIError") throw error;
