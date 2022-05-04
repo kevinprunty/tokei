@@ -175,6 +175,7 @@ module.exports = {
 
         // Get all 
         if (interaction.options.getSubcommand() === 'all') {
+            await interaction.deferReply();
             const allGacha = await gacha.getAll();
             const gachaTotal = allGacha.length;
 

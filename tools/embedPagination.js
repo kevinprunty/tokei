@@ -28,7 +28,7 @@ const createButtonRow = (initiallyDisabled, sections) => {
 const paginate = async (interaction, embedPages, initiallyDisabled) => {
     const buttonRow = createButtonRow(initiallyDisabled, embedPages.length);
 
-    await interaction.reply({
+    await interaction.editReply({
         embeds: [embedPages[0]], 
         components: [buttonRow]
     });
