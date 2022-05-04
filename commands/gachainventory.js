@@ -7,16 +7,17 @@ const paginate = require('../tools/embedPagination.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('gachainventory')
-		.setDescription('See your gacha inventory!'),
+		.setDescription('See your gacha inventory!')
+        .addUserOption(option => option.setName('target').setDescription('The user whose inventory you want to see.')),
 	async execute(interaction) {
         await interaction.deferReply();
-        const userId = interaction.user.id;
+        const userId = interaction.options.getUser('target').id || interaction.user.id;
 
         // Check if player exists:
         const player = await gachaPlayer.getPopulatedGachaPlayer(userId);
         if (!player){
             return interaction.editReply({
-                content:`You haven't tried /gacha yet!`,
+                content:`You or the indicated user did not try /gacha yet!`,
             })
         }
 
