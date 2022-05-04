@@ -16,11 +16,13 @@ module.exports = {
 
         if (!gachaPlayersIds.includes(userId)){
             // Check if player exists at all
-            player = gachaPlayer.getGachaPlayer(userId);
+            player = await gachaPlayer.getGachaPlayer(userId);
             if (!player){
                 // Since it doesn't exist, make one
+                console.log("Initializing player:", userId);
                 await gachaPlayer.initializePlayer(userId)
-                player = gachaPlayer.getGachaPlayer(userId);
+                console.log("Initializing player initialized.");
+                player = await gachaPlayer.getGachaPlayer(userId);
             }
 
             gachaPlayers.push(player);
