@@ -15,8 +15,8 @@ const createButtonRow = (initiallyDisabled, sections) => {
         { name: "firstPage", label: "<< First", disabled: true },
         { name: "prevPage", label: "< Previous", disabled: true},
         { name: "currentPage", label: `Page 1 of ${sections}`, disabled: true },
-        { name: "nextPage", label: "> Next", disabled: initiallyDisabled },
-        { name: "lastPage", label: ">> Last", disabled: initiallyDisabled },
+        { name: "nextPage", label: "Next >", disabled: initiallyDisabled },
+        { name: "lastPage", label: "Last >>", disabled: initiallyDisabled },
     ]
 
     const buttonComponents = buttonData.map(button => createButton(button.name, button.label, button.disabled));
