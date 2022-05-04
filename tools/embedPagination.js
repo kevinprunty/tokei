@@ -54,6 +54,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
         let thisPage = 1;
 
         collector.on('collect', async i => {
+            console.log("Button collected");
             switch (i.customId) {
                 case "firstpage":
                     thisPage = 1;
