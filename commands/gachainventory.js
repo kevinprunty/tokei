@@ -19,6 +19,9 @@ module.exports = {
             })
         }
 
+        console.log("Player:");
+        console.log(player);
+
         const playerInventory = player.inventory; // Array of objects
         const inventorySize = playerInventory.length;
 

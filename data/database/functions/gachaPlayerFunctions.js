@@ -15,6 +15,7 @@ const getGachaPlayer = (id) => {
 }
 
 const getPopulatedPlayer = (id) => {
+    console.log("Getting populated player");
     return GachaPlayer.findOne({userId: id}).populate('inventory.item').exec();
 }
 
