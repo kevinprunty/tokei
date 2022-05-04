@@ -80,11 +80,13 @@ const gachaPlayer = {
          // If not, push the item
          const inventory = player.inventory;
          const inventoryItemIds = inventory.map(inventoryItem => {
-            console.log(inventoryItem.item.toString())
             return inventoryItem.item.toString()
          });
-         const foundIndex = inventoryItemIds.findIndex(id => gachaId === id);
-         console.log(`GachaID: ${gachaId} | foundIndex: ${foundIndex}`)
+         const foundIndex = inventoryItemIds.findIndex(id => {
+            console.log(`GachaID: ${gachaId} | id: ${id}`)
+            return gachaId === id;
+         });
+        
          if (foundIndex !== -1){
             player.inventory[foundIndex].count++;
          } else {
