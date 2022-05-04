@@ -80,7 +80,7 @@ const gachaPlayer = {
          // If it does, just increment the count
          // If not, push the item
          const inventory = player.inventory;
-         const inventoryItemIds = inventory.map(inventoryItem => inventoryItem.item)
+         const inventoryItemIds = inventory.map(inventoryItem => inventoryItem.item.toString());
          const foundIndex = inventoryItemIds.indexOf(gachaId);
 
          if (foundIndex !== -1){
