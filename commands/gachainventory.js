@@ -12,7 +12,7 @@ module.exports = {
 	async execute(interaction) {
         await interaction.deferReply();
         const userId = interaction.options.getUser('target').id || interaction.user.id;
-
+        const displayName = interaction.guild.members.cache.find(member => member.user.id === userId).displayName;
         // Check if player exists:
         const player = await gachaPlayer.getPopulatedGachaPlayer(userId);
         if (!player){
@@ -57,7 +57,7 @@ module.exports = {
 
                 const embed = new MessageEmbed()
                     .setColor(interaction.member.displayHexColor)
-                    .setTitle(`${interaction.member.displayName}'s Inventory`)
+                    .setTitle(`${displayName}'s Inventory`)
                     .setFooter({text: 'EXP Gacha System'})
                     .addFields(
                         ...fields
