@@ -93,6 +93,10 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
 
 
         });
+
+        collector.on('end', collected => {
+            console.log(collected.last);
+        })
             
     } catch (error) {
         // means buttons timed out, remove them
