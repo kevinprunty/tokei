@@ -88,7 +88,6 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
 
             buttonRow.components[2].setLabel(`Page ${thisPage} of ${embedPages.length}`);
 
-            console.log("Attempted Index:", thisPage-1);
             await interaction.editReply({embeds: [embedPages[thisPage - 1]], components: [buttonRow]});
 
 

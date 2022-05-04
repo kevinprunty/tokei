@@ -218,6 +218,8 @@ module.exports = {
                         ...fields
                     )
                 
+                console.log('Embed number: ', i+1);
+
                 embedPages.push(embed);
                 
                 if (sections > 1){
