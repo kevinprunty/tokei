@@ -25,7 +25,7 @@ const createButtonRow = () => {
 }
 
 
-const paginate = (interaction, embedPages) => {
+const paginate = async (interaction, embedPages) => {
     const buttonRow = createButtonRow();
 
     await interaction.reply({
