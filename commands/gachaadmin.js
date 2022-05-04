@@ -158,6 +158,7 @@ module.exports = {
 
             try{
                 const item = await gacha.getGachaById(id);
+                console.log(item._id.toString());
                 const resultString = `#${item.gachaId}: ${item.name} (${item.rarity}). ${item.description}`;
                 return interaction.editReply({
                     content: `Found item: ${resultString}`,
