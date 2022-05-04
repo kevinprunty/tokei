@@ -88,7 +88,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
 
             buttonRow.components[2].setLabel(`Page ${thisPage} of ${embedPages.length}`);
 
-            await message.edit({embeds: [embedPages[thisPage - 1]], components: [buttonRow]});
+            await interaction.editReply({embeds: [embedPages[thisPage - 1]], components: [buttonRow]});
 
 
         });
