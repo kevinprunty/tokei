@@ -75,7 +75,6 @@ const gachaPlayer = {
       try {
          // Get user to update
          const player = await gachaPlayers.getGachaPlayer(userId);
-
          // Check if item exists in inventory
          // If it does, just increment the count
          // If not, push the item
@@ -84,7 +83,7 @@ const gachaPlayer = {
             console.log(inventoryItem.item.toString())
             return inventoryItem.item.toString()
          });
-         const foundIndex = inventoryItemIds.indexOf(gachaId);
+         const foundIndex = inventoryItemIds.findIndex(id => gachaId === id);
          console.log(`GachaID: ${gachaId} | foundIndex: ${foundIndex}`)
          if (foundIndex !== -1){
             player.inventory[foundIndex].count++;
