@@ -94,10 +94,13 @@ const paginate = (interaction, embedPages) => {
         });
             
     } catch (error) {
-        console.log(error);
-        return interaction.editReply({
-            content: "Pagination failed. Tell Toaster.",
-            ephemeral: true
-        })
+        // means buttons timed out, remove them
+        if (error.name === "Error [INTERACTION_COLLECTOR_ERROR]") return message.edit({components: []})
+            .catch(e => {if (e.name !== "DiscordAPIError") throw error;});
+        // otherwise throw the error if something else went wrong
+        if (error.name !== "DiscordAPIError") throw error;
     }
 }
+
+
+module.exports = paginate;

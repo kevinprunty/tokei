@@ -1,5 +1,9 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, EmbedAssertions } = require('@discordjs/builders');
+const { MessageEmbed } = require('discord.js');
+
 const { gacha } = require('../data/database/driver.js');
+const paginate = require('../tools/embedPagination.js');
+
 
 const rarityChoices = [
     {name: 'C', value: 'C'},
@@ -47,7 +51,11 @@ module.exports = {
             subcommand
                 .setName('getbynumber')
                 .setDescription('Get a gacha item by its number')
-                .addNumberOption(option => option.setName('id').setDescription('The number of the gacha item').setRequired(true))),
+                .addNumberOption(option => option.setName('id').setDescription('The number of the gacha item').setRequired(true)))
+        .addSubcommand(subcommand => 
+            subcommand
+                .setName('all')
+                .setDescription('Get all gacha items.')),
 
         
 	async execute(interaction) {
@@ -162,6 +170,58 @@ module.exports = {
                     ephemeral: true
                 })
             }
+        }
+
+
+        // Get all 
+        if (interaction.options.getSubcommand() === 'all') {
+            const allGacha = await gacha.getAll();
+            const gachaTotal = allGacha.length;
+
+            // 25 is the field limit on embeds
+            const sections = Math.ceil(gachaTotal/25);
+
+            const embedPages = [];
+
+            // Loop: Create the Embed, push it to array
+            // i represents the current section
+            for (let i = 0; i < sections; i++){
+                //  Generate a random color for each page. Why not?
+                const randomColor = Math.floor(Math.random()*16777215).toString(16);
+                const indexOffset = i*25;
+
+                const fields = [];
+
+                let endingIndex = 25;
+                if (i === sections-1){
+                    endingIndex = allGacha.length - (indexOffset);
+                } 
+
+                for (let index = 0; index < endingIndex; index++){
+                    const totalIndex = index+indexOffset;
+                    const currentItem = allGacha[totalIndex];
+
+                    fields.push(
+                        {
+                            name: currentItem.gachaId.toString(),
+                            value: currentItem.name
+                        }
+                    )
+                }
+
+                const embed = new MessageEmbed()
+                    .setColor(randomColor)
+                    .setTitle(`All Gacha Items`)
+                    .setFooter({text: 'EXP Gacha System'})
+                    .addFields(
+                        ...fields
+                    )
+                
+                embedPages.push(embed);
+
+                return paginate(interaction, embedPages);
+            }
+
         }
 
         const replyContent = ``;
