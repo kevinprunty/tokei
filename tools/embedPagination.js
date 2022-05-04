@@ -10,11 +10,11 @@ const createButton = (buttonName, buttonLabel, disabled) => {
         .setDisabled(disabled)
 }
 
-const createButtonRow = (initiallyDisabled) => {
+const createButtonRow = (initiallyDisabled, sections) => {
     const buttonData = [
         { name: "firstPage", label: "<< First", disabled: true },
         { name: "prevPage", label: "< Previous", disabled: true},
-        { name: "currentPage", label: "Page # of #", disabled: true },
+        { name: "currentPage", label: `Page 1 of ${pages}`, disabled: true },
         { name: "nextPage", label: "> Next", disabled: initiallyDisabled },
         { name: "lastPage", label: ">> Last", disabled: initiallyDisabled },
     ]
@@ -26,7 +26,7 @@ const createButtonRow = (initiallyDisabled) => {
 
 
 const paginate = async (interaction, embedPages, initiallyDisabled) => {
-    const buttonRow = createButtonRow(initiallyDisabled);
+    const buttonRow = createButtonRow(initiallyDisabled, embedPages.length);
 
     await interaction.reply({
         embeds: [embedPages[0]], 
