@@ -1,5 +1,6 @@
 const { gachaPlayer } = require('../data/database/driver.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { MessageEmbed } = require('discord.js');
 
 const paginate = require('../tools/embedPagination.js');
 
