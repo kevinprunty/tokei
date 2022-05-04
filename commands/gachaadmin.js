@@ -159,7 +159,6 @@ module.exports = {
             try{
                 const item = await gacha.getGachaById(id);
                 console.log("Gacha admin getbynumber debug info:")
-                console.log("User ID:", interaction.user.id);
                 console.log("Item ID:", item._id.toString());
                 const resultString = `#${item.gachaId}: ${item.name} (${item.rarity}). ${item.description}`;
                 return interaction.editReply({
