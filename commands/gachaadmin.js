@@ -204,7 +204,8 @@ module.exports = {
                     fields.push(
                         {
                             name: currentItem.gachaId.toString(),
-                            value: currentItem.name
+                            value: currentItem.name, 
+                            inline: true
                         }
                     )
                 }
@@ -218,8 +219,13 @@ module.exports = {
                     )
                 
                 embedPages.push(embed);
-
-                return paginate(interaction, embedPages);
+                
+                if (sections > 1){
+                    return paginate(interaction, embedPages, false);
+                } else {
+                    return paginate(interaction, embedPages, true);
+                }
+                
             }
 
         }

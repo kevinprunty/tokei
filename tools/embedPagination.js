@@ -2,31 +2,31 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 
 
 
-const createButton = (buttonName, buttonLabel) => {
+const createButton = (buttonName, buttonLabel, disabled) => {
     return new MessageButton()
         .setCustomId(buttonName.toLowerCase())
         .setLabel(buttonLabel)
         .setStyle("PRIMARY")
-        .setDisabled(true)
+        .setDisabled(disabled)
 }
 
-const createButtonRow = () => {
+const createButtonRow = (initiallyDisabled) => {
     const buttonData = [
-        { name: "firstPage", label: "<< First" },
-        { name: "prevPage", label: "< Previous" },
-        { name: "currentPage", label: "Page # of #" },
-        { name: "nextPage", label: "> Next" },
-        { name: "lastPage", label: ">> Last" },
+        { name: "firstPage", label: "<< First", disabled: true },
+        { name: "prevPage", label: "< Previous", disabled: true},
+        { name: "currentPage", label: "Page # of #", disabled: true },
+        { name: "nextPage", label: "> Next", disabled: initiallyDisabled },
+        { name: "lastPage", label: ">> Last", disabled: initiallyDisabled },
     ]
 
-    const buttonComponents = buttonData.map(button => createButton(button.name, button.label));
+    const buttonComponents = buttonData.map(button => createButton(button.name, button.label, button.disabled));
 
     return new MessageActionRow().addComponents(...buttonComponents);
 }
 
 
-const paginate = async (interaction, embedPages) => {
-    const buttonRow = createButtonRow();
+const paginate = async (interaction, embedPages, initiallyDisabled) => {
+    const buttonRow = createButtonRow(initiallyDisabled);
 
     await interaction.reply({
         embeds: [embedPages[0]], 
