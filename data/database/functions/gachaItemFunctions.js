@@ -28,7 +28,7 @@ const getAll = async () => {
 }
 
 const getByRarity = (inputRarity) => {
-    return GatchaItem.find({$or:[{rarity: inputRarity.toUpperCase()}, {rarity: inputRarity.toLowerCase()}]}).exec();
+    return GachaItem.find({$or:[{rarity: inputRarity.toUpperCase()}, {rarity: inputRarity.toLowerCase()}]}).exec();
 }
 
 // UPDATE // 
