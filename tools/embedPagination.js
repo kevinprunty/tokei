@@ -48,7 +48,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
         // combined with the code on https://discordjs.guide/interactions/buttons.html#responding-to-buttons
 
         const filter = i => ids.includes(i.customId) && i.user.id === interaction.user.id;
-        const time = 5 * 60 * 1000;
+        const time = 3 * 60 * 1000;
         const collector = interaction.channel.createMessageComponentCollector({filter, time});
         
         let thisPage = 1;
@@ -93,7 +93,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
 
         });
 
-        collector.on('end', collected => {
+        collector.on('end', async collected => {
             await collected.last().update({components: []});
         })
             
