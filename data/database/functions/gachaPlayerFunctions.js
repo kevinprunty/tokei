@@ -14,6 +14,10 @@ const getGachaPlayer = (id) => {
     return GachaPlayer.findOne({userId: id}).exec();
 }
 
+const getPopulatedPlayer = (id) => {
+    return GachaPlayer.findOne({userId: id}).populate('inventory.item').exec();
+}
+
 // UPDATE // 
 const updateGachaPlayer = (id, update) => {
     return GachaPlayer.updateOne({userId: id}, update);
@@ -30,4 +34,5 @@ module.exports = {
     getGachaPlayer,
     updateGachaPlayer,
     deleteGachaPlayer, 
+    getPopulatedPlayer
 }

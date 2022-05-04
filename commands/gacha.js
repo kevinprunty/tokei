@@ -9,6 +9,7 @@ module.exports = {
 		.setName('gacha')
 		.setDescription('Pull from the EXP Gacha!'),
 	async execute(interaction) {
+        await interaction.deferReply();
         const userId = interaction.user.id;
         let player;
         // Check if player exists in cache
@@ -55,7 +56,7 @@ module.exports = {
 
 
 
-		await interaction.reply({
+		await interaction.editReply({
 			content:`**You pulled** #${gachaPull.gachaId} ${gachaPull.name} (${gachaPull.rarity.toUpperCase()})! ${gachaPull.description}`,
 		})
 	},

@@ -67,16 +67,14 @@ const gachaPlayer = {
    getGachaPlayer(userId){
       return gachaPlayers.getGachaPlayer(userId);
    }, 
+   getPopulatedGachaPlayer(userId){
+      return gachaPlayers.getPopulatedPlayer(userId);
+   }, 
    async pushGachaItem(userId, gachaId){
 
       try {
          // Get user to update
          const player = await gachaPlayers.getGachaPlayer(userId);
-
-         // Return to ObjectIds
-         if (player.populated()){
-            player.depopulate();
-         }
 
          // Check if item exists in inventory
          // If it does, just increment the count
@@ -93,9 +91,6 @@ const gachaPlayer = {
                count: 1
             })
          }
-
-         // Repopulate inventory
-         await player.populate();
 
          // Update player
          await gachaPlayers.updateGachaPlayer(userId, player);
