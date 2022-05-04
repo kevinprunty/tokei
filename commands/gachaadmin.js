@@ -220,14 +220,15 @@ module.exports = {
 
                 embedPages.push(embed);
                 
-                if (sections > 1){
-                    await paginate(interaction, embedPages, false);
-                } else {
-                    await paginate(interaction, embedPages, true);
-                }
+                
                 
             }
 
+            if (sections > 1){
+                await paginate(interaction, embedPages, false);
+            } else {
+                await paginate(interaction, embedPages, true);
+            }
         }
 	},
 };

@@ -31,7 +31,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
     await interaction.reply({
         embeds: [embedPages[0]], 
         components: [buttonRow]
-    })
+    });
 
 
     const ids = [
