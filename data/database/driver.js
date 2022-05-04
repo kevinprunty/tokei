@@ -74,8 +74,8 @@ const gachaPlayer = {
          const player = await gachaPlayers.getGachaPlayer(userId);
 
          // Return to ObjectIds
-         if (player.populated('inventory.item')){
-            player.depopulate('inventory.item');
+         if (player.populated()){
+            player.depopulate();
          }
 
          // Check if item exists in inventory
@@ -95,7 +95,7 @@ const gachaPlayer = {
          }
 
          // Repopulate inventory
-         player.populate('inventory.item');
+         await player.populate();
 
          // Update player
          await gachaPlayers.updateGachaPlayer(userId, player);
