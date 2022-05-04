@@ -95,7 +95,7 @@ const paginate = async (interaction, embedPages, initiallyDisabled) => {
         });
 
         collector.on('end', collected => {
-            console.log(collected.last);
+            console.log(collected.last());
         })
             
     } catch (error) {
