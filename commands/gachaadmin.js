@@ -217,25 +217,17 @@ module.exports = {
                     .addFields(
                         ...fields
                     )
-                
-                console.log('Embed number: ', i+1);
-                console.log('Sections: ', sections);
-                
+
                 embedPages.push(embed);
                 
                 if (sections > 1){
-                    return paginate(interaction, embedPages, false);
+                    await paginate(interaction, embedPages, false);
                 } else {
-                    return paginate(interaction, embedPages, true);
+                    await paginate(interaction, embedPages, true);
                 }
                 
             }
 
         }
-
-        const replyContent = ``;
-		await interaction.reply({
-			content:replyContent,
-		})
 	},
 };
