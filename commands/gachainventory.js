@@ -11,7 +11,7 @@ module.exports = {
         .addUserOption(option => option.setName('target').setDescription('The user whose inventory you want to see.')),
 	async execute(interaction) {
         await interaction.deferReply();
-        const userId = interaction.options.getUser('target').id || interaction.user.id;
+        const userId = interaction.options.getUser('target') ? interaction.options.getUser('target').id : interaction.user.id;
         const displayName = interaction.guild.members.cache.find(member => member.user.id === userId).displayName;
         // Check if player exists:
         const player = await gachaPlayer.getPopulatedGachaPlayer(userId);
