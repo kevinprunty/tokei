@@ -12,15 +12,12 @@ module.exports = {
         const userId = interaction.user.id;
 
         // Check if player exists:
-        const player = gachaPlayer.getPopulatedGachaPlayer(userId);
+        const player = await gachaPlayer.getPopulatedGachaPlayer(userId);
         if (!player){
             return interaction.editReply({
                 content:`You haven't tried /gacha yet!`,
             })
         }
-
-        console.log("Player:");
-        console.log(player);
 
         const playerInventory = player.inventory; // Array of objects
         const inventorySize = playerInventory.length;
